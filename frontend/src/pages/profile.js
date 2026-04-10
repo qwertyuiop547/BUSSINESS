@@ -392,7 +392,7 @@ export default function ProfilePage() {
                                         }}
                                     />
                                 ) : (
-                                    <span className="text-white text-4xl font-bold">
+                                    <span className="text-slate-900 dark:text-white text-4xl font-bold">
                                         {profile?.username?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
                                     </span>
                                 )}
@@ -404,7 +404,7 @@ export default function ProfilePage() {
                                 className="absolute p-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full cursor-pointer hover:from-cyan-400 hover:to-blue-500 hover:scale-110 transition-all shadow-xl ring-2 ring-white dark:ring-slate-800"
                                 style={{ zIndex: 999, bottom: '-10px', left: '-10px' }}
                             >
-                                <Camera className="w-4 h-4 text-white" />
+                                <Camera className="w-4 h-4 text-slate-900 dark:text-white" />
                                 <input
                                     id="profile-picture-upload"
                                     type="file"
@@ -422,14 +422,14 @@ export default function ProfilePage() {
                                     style={{ zIndex: 999, top: '-10px', right: '-10px' }}
                                     title="Remove profile picture"
                                 >
-                                    <Trash2 className="w-4 h-4 text-white" />
+                                    <Trash2 className="w-4 h-4 text-slate-900 dark:text-white" />
                                 </button>
                             )}
 
                             {/* Admin badge */}
                             {profile?.role === 'ADMIN' && (
                                 <div className="absolute w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center ring-2 ring-white dark:ring-slate-800" style={{ zIndex: 999, bottom: '-4px', right: '-4px' }}>
-                                    <Shield className="w-4 h-4 text-white" />
+                                    <Shield className="w-4 h-4 text-slate-900 dark:text-white" />
                                 </div>
                             )}
                         </div>
@@ -454,7 +454,7 @@ export default function ProfilePage() {
                                     }}
                                     size="sm"
                                     variant="secondary"
-                                    className="bg-slate-700/50 hover:bg-slate-600/50 text-white border-slate-600"
+                                    className="bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-600/50 text-slate-900 dark:text-white border-slate-300 dark:border-slate-600"
                                 >
                                     <X className="w-4 h-4 mr-2" />
                                     Cancel
@@ -474,8 +474,8 @@ export default function ProfilePage() {
                                 {profile?.role}
                             </span>
                         </div>
-                        <p className="text-slate-500 dark:text-slate-400 mt-1">{profile?.email}</p>
-                        <p className="text-slate-400 dark:text-slate-500 text-sm mt-2 flex items-center justify-center md:justify-start gap-1">
+                        <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-1">{profile?.email}</p>
+                        <p className="text-slate-500 dark:text-slate-400 dark:text-slate-500 text-sm mt-2 flex items-center justify-center md:justify-start gap-1">
                             <Calendar className="w-4 h-4" />
                             Member since {formatDate(profile?.createdAt)}
                         </p>
@@ -485,7 +485,7 @@ export default function ProfilePage() {
                     {!isEditing ? (
                         <Button
                             onClick={handleEditProfile}
-                            className="bg-white/5 hover:bg-white/10 border border-white/20 text-white backdrop-blur-sm"
+                            className="bg-white/5 hover:bg-white/10 border border-white/20 text-slate-900 dark:text-white backdrop-blur-sm"
                         >
                             <Edit2 className="w-4 h-4 mr-2" />
                             Edit Profile
@@ -498,7 +498,7 @@ export default function ProfilePage() {
                                     setFormData({ username: profile?.username || '' });
                                     setIsEditing(false);
                                 }}
-                                className="bg-slate-700/50 hover:bg-slate-600/50 border border-slate-600 text-white"
+                                className="bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-600/50 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white"
                             >
                                 <X className="w-4 h-4 mr-2" />
                                 Cancel
@@ -518,7 +518,7 @@ export default function ProfilePage() {
                 {/* Editable Username Field */}
                     {isEditing && (
                     <div className="mt-6 max-w-md">
-                        <label className="text-slate-500 dark:text-slate-400 text-sm mb-2 block">Username</label>
+                        <label className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-sm mb-2 block">Username</label>
                         <input
                             type="text"
                             value={formData.username}
@@ -526,7 +526,7 @@ export default function ProfilePage() {
                             placeholder="Enter username"
                             className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 backdrop-blur-sm"
                         />
-                        <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
+                        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">
                             Letters, numbers, spaces, dots, dashes, and underscores only.
                         </p>
                     </div>
@@ -545,7 +545,7 @@ export default function ProfilePage() {
 
                         <div className="relative flex items-start justify-between">
                             <div>
-                                <p className="text-slate-500 dark:text-slate-400 text-sm group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">{stat.label}</p>
+                                <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-sm group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">{stat.label}</p>
                                 <p className={`text-2xl font-bold mt-1 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
                                     {stat.value}
                                 </p>
@@ -576,24 +576,24 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between px-6 py-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-all group cursor-default">
                         <div className="flex items-center gap-4">
                             <div className="p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl group-hover:scale-110 transition-transform ring-1 ring-slate-200 dark:ring-slate-600/50">
-                                <User className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                                <User className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Username</p>
+                                <p className="text-xs font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-wider">Username</p>
                                 <p className="font-bold text-slate-800 dark:text-white text-base mt-0.5">{profile?.username || 'Not set'}</p>
                             </div>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
+                        <ChevronRight className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
                     </div>
 
                     {/* Email */}
                     <div className="flex items-center justify-between px-6 py-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-all group cursor-default">
                         <div className="flex items-center gap-4">
                             <div className="p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl group-hover:scale-110 transition-transform ring-1 ring-slate-200 dark:ring-slate-600/50">
-                                <Mail className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                                <Mail className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Email Address</p>
+                                <p className="text-xs font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-wider">Email Address</p>
                                 <p className="font-bold text-slate-800 dark:text-white text-base mt-0.5">{profile?.email}</p>
                             </div>
                         </div>
@@ -601,7 +601,7 @@ export default function ProfilePage() {
                             <span className="text-[11px] font-extrabold px-2.5 py-1 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center gap-1.5 uppercase tracking-wide ring-1 ring-emerald-500/30">
                                 <Check className="w-3.5 h-3.5" /> Verified
                             </span>
-                            <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
+                            <ChevronRight className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
                         </div>
                     </div>
 
@@ -609,14 +609,14 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between px-6 py-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-all group cursor-default">
                         <div className="flex items-center gap-4">
                             <div className="p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl group-hover:scale-110 transition-transform ring-1 ring-slate-200 dark:ring-slate-600/50">
-                                <Shield className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                                <Shield className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Account Type</p>
+                                <p className="text-xs font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-wider">Account Type</p>
                                 <p className="font-bold text-slate-800 dark:text-white text-base mt-0.5">{profile?.role === 'ADMIN' ? 'Administrator' : 'Standard User'}</p>
                             </div>
                         </div>
-                        <span className={`px-3 py-1 font-extrabold uppercase tracking-widest text-[10px] rounded-lg ring-1 ${profile?.role === 'ADMIN' ? 'bg-amber-500/20 text-amber-600 dark:text-amber-400 ring-amber-500/30' : 'bg-slate-100 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 ring-slate-200 dark:ring-slate-600/50'}`}>
+                        <span className={`px-3 py-1 font-extrabold uppercase tracking-widest text-[10px] rounded-lg ring-1 ${profile?.role === 'ADMIN' ? 'bg-amber-500/20 text-amber-600 dark:text-amber-400 ring-amber-500/30' : 'bg-slate-100 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 ring-slate-200 dark:ring-slate-600/50'}`}>
                             {profile?.role}
                         </span>
                     </div>
@@ -625,14 +625,14 @@ export default function ProfilePage() {
                     <div className="flex items-center justify-between px-6 py-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-all group cursor-default">
                         <div className="flex items-center gap-4">
                             <div className="p-3 bg-slate-100 dark:bg-slate-700/50 rounded-xl group-hover:scale-110 transition-transform ring-1 ring-slate-200 dark:ring-slate-600/50">
-                                <Calendar className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                                <Calendar className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Member Since</p>
+                                <p className="text-xs font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-wider">Member Since</p>
                                 <p className="font-bold text-slate-800 dark:text-white text-base mt-0.5">{formatDate(profile?.createdAt)}</p>
                             </div>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
+                        <ChevronRight className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-600 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
                     </div>
                 </div>
             </div>
@@ -666,7 +666,7 @@ export default function ProfilePage() {
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Current Password */}
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                    <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                                         Current Password
                                     </label>
                                     <div className="relative">
@@ -675,12 +675,12 @@ export default function ProfilePage() {
                                             value={passwordData.currentPassword}
                                             onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
                                             placeholder="••••••••"
-                                            className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 outline-none transition-all font-medium"
+                                            className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 rounded-xl text-slate-900 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 outline-none transition-all font-medium"
                                         />
                                         <button
                                             type="button"
                                             onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-violet-500 dark:hover:text-violet-400 transition-colors"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:text-violet-500 dark:hover:text-violet-400 transition-colors"
                                         >
                                             {showCurrentPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                         </button>
@@ -689,7 +689,7 @@ export default function ProfilePage() {
 
                                 {/* New Password */}
                                 <div className="space-y-2">
-                                    <label className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                                    <label className="text-xs font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                                         New Password
                                     </label>
                                     <div className="relative">
@@ -703,7 +703,7 @@ export default function ProfilePage() {
                                         <button
                                             type="button"
                                             onClick={() => setShowNewPassword(!showNewPassword)}
-                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 hover:text-violet-500 dark:hover:text-violet-400 transition-colors"
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:text-violet-500 dark:hover:text-violet-400 transition-colors"
                                         >
                                             {showNewPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                                         </button>
@@ -713,7 +713,7 @@ export default function ProfilePage() {
 
                             {/* Confirm Password */}
                             <div className="space-y-2">
-                                <label className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                                     Confirm New Password
                                 </label>
                                 <input
@@ -758,15 +758,15 @@ export default function ProfilePage() {
                         <div className="absolute bottom-0 left-0 w-32 h-32 bg-fuchsia-500/5 dark:bg-fuchsia-500/10 rounded-full blur-3xl -ml-16 -mb-16" />
 
                         <div className="inline-flex items-center justify-center p-6 bg-slate-100 dark:bg-slate-900/50 rounded-3xl mb-6 shadow-inner ring-1 ring-slate-200 dark:ring-slate-700/50">
-                            <Lock className="w-10 h-10 text-slate-400 dark:text-slate-500" />
+                            <Lock className="w-10 h-10 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                         </div>
                         <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Account Security</h4>
-                        <p className="text-slate-500 dark:text-slate-400 max-w-sm mx-auto text-sm leading-relaxed">
+                        <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 max-w-sm mx-auto text-sm leading-relaxed">
                             Maintain your account safety by regularly updating your credentials with a strong, unconventional password.
                         </p>
                         <div className="inline-flex items-center gap-2 mt-6 px-4 py-1.5 bg-slate-100 dark:bg-slate-900/50 rounded-full ring-1 ring-slate-200 dark:ring-slate-700/50">
                             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Secure Connection Active</span>
+                            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 dark:text-slate-500 uppercase tracking-widest">Secure Connection Active</span>
                         </div>
                     </div>
                 )}
@@ -783,7 +783,7 @@ export default function ProfilePage() {
                         <AlertTriangle className="w-10 h-10 text-red-500 dark:text-red-400" />
                     </div>
                     <h4 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Delete Account</h4>
-                    <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto text-sm leading-relaxed mb-4">
+                    <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 max-w-md mx-auto text-sm leading-relaxed mb-4">
                         Permanently delete your account. This action cannot be undone.
                     </p>
                     {parseFloat(profile?.balance || 0) > 0 ? (
@@ -825,7 +825,7 @@ export default function ProfilePage() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                             Type <span className="font-mono font-bold text-red-400">DELETE</span> to confirm:
                         </label>
                         <Input
@@ -833,7 +833,7 @@ export default function ProfilePage() {
                             value={confirmDelete}
                             onChange={(e) => setConfirmDelete(e.target.value)}
                             placeholder="DELETE"
-                            className="font-mono bg-slate-900/50 border-slate-700/50 text-white"
+                            className="font-mono bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700/50 text-slate-900 dark:text-white"
                         />
                     </div>
 
@@ -844,7 +844,7 @@ export default function ProfilePage() {
                                 setShowDeleteModal(false);
                                 setConfirmDelete('');
                             }}
-                            className="flex-1 border-slate-600/50 text-slate-300 hover:bg-slate-700/50"
+                            className="flex-1 border-slate-300 dark:border-slate-600/50 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50"
                             disabled={deleteAccount.isPending}
                         >
                             Cancel
@@ -872,7 +872,7 @@ export default function ProfilePage() {
                 title="Profile Picture"
                 size="full"
             >
-                <div className="flex items-center justify-center p-8 bg-slate-900/50">
+                <div className="flex items-center justify-center p-8 bg-slate-50 dark:bg-slate-900/50">
                     {imageUrl ? (
                         <img
                             src={imageUrl}
@@ -883,7 +883,7 @@ export default function ProfilePage() {
                             }}
                         />
                     ) : (
-                        <div className="text-center text-slate-400">
+                        <div className="text-center text-slate-500 dark:text-slate-400">
                             No image to display
                         </div>
                     )}

@@ -142,8 +142,7 @@ export default function AdminCategoriesPage() {
                 .map((category) => (
                   <div
                     key={category.id}
-                    className={`flex items-center gap-4 p-4 ${!category.isActive ? 'opacity-50' : ''
-                      }`}
+                    className={`flex items-center gap-4 p-4 ${!category.isActive ? 'opacity-50' : '' }`}
                   >
                     <GripVertical className="w-5 h-5 text-gray-400 cursor-move" />
 

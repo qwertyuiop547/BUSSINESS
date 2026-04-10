@@ -6,6 +6,7 @@
 
 const express = require('express');
 const router = express.Router();
+const { prisma } = require('../config/database');
 
 // Import module routes
 const authRoutes = require('../modules/auth/auth.routes');
@@ -41,6 +42,30 @@ router.use('/external', externalRoutes);
 
 // Public routes (no auth required)
 router.get(`/${API_VERSION}/public/maintenance`, getMaintenanceStatusHandler);
+
+// Public stats for landing page
+router.get(`/${API_VERSION}/public/stats`, async (req, res) => {
+  try {
+    const [totalUsers, totalOrders, completedOrders] = await Promise.all([
+      prisma.user.count(),
+      prisma.order.count(),
+      prisma.order.count({ where: { status: 'COMPLETED' } }),
+    ]);
+
+    res.json({
+      success: true,
+      data: {
+        totalUsers,
+        totalOrders,
+        completedOrders,
+        uptime: '99.9%',
+        support: '24/7',
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Failed to fetch stats' });
+  }
+});
 
 // API info
 router.get('/', (req, res) => {

@@ -161,12 +161,8 @@ export default function AdminProvidersPage() {
               <CardBody>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${provider.isActive
-                      ? 'bg-green-100 dark:bg-green-900/30'
-                      : 'bg-gray-100 dark:bg-gray-800'
-                      }`}>
-                      <Server className={`w-5 h-5 ${provider.isActive ? 'text-green-600' : 'text-gray-500'
-                        }`} />
+                    <div className={`p-2 rounded-lg ${provider.isActive ? 'bg-green-100 dark:bg-green-900/30' : 'bg-gray-100 dark:bg-gray-800' }`}>
+                      <Server className={`w-5 h-5 ${provider.isActive ? 'text-green-600' : 'text-gray-500' }`} />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 dark:text-white">{provider.name}</h3>

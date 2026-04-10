@@ -210,17 +210,17 @@ export default function WalletPage() {
               <div className="flex items-center gap-5">
                 <div className="relative">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg shadow-emerald-500/30">
-                    <Wallet className="h-8 w-8 text-white" />
+                    <Wallet className="h-8 w-8 text-slate-900 dark:text-white" />
                   </div>
                   <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500 ring-4 ring-white dark:ring-slate-900">
-                    <ArrowUpRight className="h-4 w-4 text-white" />
+                    <ArrowUpRight className="h-4 w-4 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-500 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Add Funds
                   </h1>
-                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400 dark:text-slate-400">
                     Top up your wallet balance instantly
                   </p>
                 </div>
@@ -233,7 +233,7 @@ export default function WalletPage() {
               <div className="relative rounded-2xl border border-slate-200 dark:border-white/20 bg-white/90 dark:bg-slate-900/80 p-6 shadow-xl dark:shadow-2xl backdrop-blur-xl">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">Current Balance</p>
+                    <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 dark:text-slate-400">Current Balance</p>
                     <p className="mt-2 text-4xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent">
                       {formatAmount(user?.balance || 0)}
                     </p>
@@ -245,11 +245,11 @@ export default function WalletPage() {
                 
                 <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700/50 grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-slate-400 dark:text-slate-500">Total Deposited</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Total Deposited</p>
                     <p className="text-lg font-semibold text-emerald-500 dark:text-emerald-400">+{formatAmount(totalDeposited)}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400 dark:text-slate-500">Pending</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Pending</p>
                     <p className="text-lg font-semibold text-amber-500 dark:text-amber-400">{pendingRequests} request{pendingRequests !== 1 ? 's' : ''}</p>
                   </div>
                 </div>
@@ -284,23 +284,19 @@ export default function WalletPage() {
                       key={key}
                       type="button"
                       onClick={() => setSelectedMethod(key)}
-                      className={`group relative p-5 rounded-xl border-2 text-left transition-all duration-300 overflow-hidden ${
-                        selectedMethod === key
-                          ? 'border-emerald-500 bg-emerald-500/10'
-                          : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700/50'
-                      }`}
+                      className={`group relative p-5 rounded-xl border-2 text-left transition-all duration-300 overflow-hidden ${ selectedMethod === key ? 'border-emerald-500 bg-emerald-500/10' : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700/50' }`}
                     >
                       {selectedMethod === key && (
                         <div className="absolute top-2 right-2">
                           <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500">
-                            <Check className="h-4 w-4 text-white" />
+                            <Check className="h-4 w-4 text-slate-900 dark:text-white" />
                           </div>
                         </div>
                       )}
                       <span className={`font-semibold text-lg ${selectedMethod === key ? 'text-emerald-500 dark:text-emerald-400' : 'text-slate-800 dark:text-white'}`}>
                         {method.name}
                       </span>
-                      <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Instant transfer</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-1">Instant transfer</p>
                     </button>
                   ))}
                 </div>
@@ -312,7 +308,7 @@ export default function WalletPage() {
                   Amount ({currency})
                 </label>
                 <div className="relative">
-                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-xl">{getCurrencySymbol()}</span>
+                  <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400 font-bold text-xl">{getCurrencySymbol()}</span>
                   <input
                     type="number"
                     value={amount}
@@ -328,11 +324,7 @@ export default function WalletPage() {
                       key={quickAmount}
                       type="button"
                       onClick={() => setAmount(quickAmount.toString())}
-                      className={`flex-1 px-4 py-3 rounded-xl font-medium transition-all duration-200 ${
-                        amount === quickAmount.toString()
-                          ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
-                          : 'bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-white'
-                      }`}
+                      className={`flex-1 px-4 py-3 rounded-xl font-medium transition-all duration-200 ${ amount === quickAmount.toString() ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25' : 'bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-800 dark:hover:text-white' }`}
                     >
                       {getCurrencySymbol()}{quickAmount.toLocaleString()}
                     </button>
@@ -371,11 +363,11 @@ export default function WalletPage() {
 
               {/* Amount Summary */}
               <div className="text-center p-6 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/50">
-                <p className="text-sm text-slate-500 dark:text-slate-400">You are adding</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">You are adding</p>
                 <p className="text-4xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent mt-2">
                   {getCurrencySymbol()}{parseFloat(amount).toLocaleString()}
                 </p>
-                <p className="text-xs text-slate-400 dark:text-slate-500 mt-2">via {currentMethod.name}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-2">via {currentMethod.name}</p>
               </div>
 
               {/* QR Code or Card Icon or Coming Soon */}
@@ -452,11 +444,7 @@ export default function WalletPage() {
                           setTimeout(() => setShowPlusOne(false), 600);
                           setTimeout(() => setClickEffects(prev => prev.filter(e => !newEffects.includes(e))), 800);
                         }}
-                        className={`relative flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-150 bg-white dark:bg-slate-800 text-slate-800 dark:text-white border-2 border-slate-200 dark:border-slate-600 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/20 overflow-hidden ${
-                          isAnimating 
-                            ? 'scale-110 border-amber-400 shadow-lg shadow-amber-500/40' 
-                            : 'active:scale-95'
-                        }`}
+                        className={`relative flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-150 bg-white dark:bg-slate-800 text-slate-800 dark:text-white border-2 border-slate-200 dark:border-slate-600 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/20 overflow-hidden ${ isAnimating ? 'scale-110 border-amber-400 shadow-lg shadow-amber-500/40' : 'active:scale-95' }`}
                       >
                         {/* Ripple effect */}
                         {isAnimating && (
@@ -478,7 +466,7 @@ export default function WalletPage() {
                       type="button"
                       variant="secondary"
                       onClick={() => setShowPaymentDetails(false)}
-                      className="mt-4 bg-slate-700 hover:bg-slate-600 border-none"
+                      className="mt-4 bg-slate-100 dark:bg-slate-700 hover:bg-slate-600 border-none"
                     >
                       Back to Payment Methods
                     </Button>
@@ -507,7 +495,7 @@ export default function WalletPage() {
                         )}
                       </div>
                     </div>
-                    <p className="text-sm text-slate-400 mt-4 flex items-center gap-2">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 flex items-center gap-2">
                       {currentMethod.qrImage ? (
                         <>
                           <QrCode className="w-4 h-4" />
@@ -531,20 +519,20 @@ export default function WalletPage() {
                 <div className="space-y-3">
                   {currentMethod.instructions.map((instruction, index) => (
                     <p key={index} className="text-slate-700 dark:text-slate-200 font-medium flex items-center gap-3">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-xs text-slate-500 dark:text-slate-400">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         {index + 1}
                       </span>
                       {instruction}
                       {index === 0 && currentMethod.qrImage && (
                         <button
                           onClick={copyNumber}
-                          className="p-2 hover:bg-slate-700 rounded-lg transition-colors group"
+                          className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors group"
                           title="Copy number"
                         >
                           {copied ? (
                             <Check className="w-4 h-4 text-emerald-400" />
                           ) : (
-                            <Copy className="w-4 h-4 text-slate-500 group-hover:text-slate-300" />
+                            <Copy className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300" />
                           )}
                         </button>
                       )}
@@ -581,7 +569,7 @@ export default function WalletPage() {
                     type="button"
                     variant="secondary"
                     onClick={() => setShowPaymentDetails(false)}
-                    className="flex-1 bg-slate-700 hover:bg-slate-600 border-none"
+                    className="flex-1 bg-slate-100 dark:bg-slate-700 hover:bg-slate-600 border-none"
                   >
                     Back
                   </Button>
@@ -611,7 +599,7 @@ export default function WalletPage() {
             </div>
             <div>
               <h2 className="font-semibold text-slate-800 dark:text-white">Transaction History</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">Your deposit requests</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">Your deposit requests</p>
             </div>
           </div>
         </div>
@@ -619,11 +607,11 @@ export default function WalletPage() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-slate-200 dark:border-slate-700/50 bg-slate-50 dark:bg-slate-900/30">
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">#</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Method</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Amount</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">#</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">Date</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">Method</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">Amount</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 dark:divide-slate-700/50">
@@ -632,10 +620,10 @@ export default function WalletPage() {
                   <td colSpan={5} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center">
                       <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-4">
-                        <CreditCard className="w-8 h-8 text-slate-400 dark:text-slate-500" />
+                        <CreditCard className="w-8 h-8 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                       </div>
                       <p className="text-slate-600 dark:text-slate-400 font-medium">No transactions yet</p>
-                      <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">Your deposit history will appear here</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-1">Your deposit history will appear here</p>
                     </div>
                   </td>
                 </tr>
@@ -658,11 +646,7 @@ export default function WalletPage() {
                         +{formatAmount(topUp.amount)}
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${
-                          topUp.status === 'APPROVED' ? 'bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30' :
-                          topUp.status === 'REJECTED' ? 'bg-rose-500/20 text-rose-400 ring-1 ring-rose-500/30' :
-                          'bg-amber-500/20 text-amber-400 ring-1 ring-amber-500/30'
-                        }`}>
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${ topUp.status === 'APPROVED' ? 'bg-emerald-500/20 text-emerald-400 ring-1 ring-emerald-500/30' : topUp.status === 'REJECTED' ? 'bg-rose-500/20 text-rose-400 ring-1 ring-rose-500/30' : 'bg-amber-500/20 text-amber-400 ring-1 ring-amber-500/30' }`}>
                           <StatusIcon className="w-3.5 h-3.5" />
                           {statusInfo.label}
                         </span>

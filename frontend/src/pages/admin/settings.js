@@ -213,7 +213,7 @@ export default function AdminSettingsPage() {
     <DashboardLayout isAdmin>
       <div className="space-y-6">
         {/* Premium Hero Header */}
-        <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900 via-slate-800/90 to-slate-900 shadow-2xl">
+        <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/90 dark:to-slate-900 shadow-2xl">
           {/* Animated Background Effects */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/20 blur-3xl animate-pulse" />
@@ -238,14 +238,14 @@ export default function AdminSettingsPage() {
                 <div className="flex items-center gap-4">
                   <div className="relative">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/30">
-                      <Settings className="h-7 w-7 text-white" />
+                      <Settings className="h-7 w-7 text-slate-900 dark:text-white" />
                     </div>
                   </div>
                   <div>
-                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
+                    <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                       Settings
                     </h1>
-                    <p className="text-base text-slate-400 flex items-center gap-2">
+                    <p className="text-base text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                       <Target className="h-4 w-4 text-violet-400" />
                       Manage system-wide settings and configurations
                     </p>
@@ -284,17 +284,17 @@ export default function AdminSettingsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Sidebar - Section Navigation */}
             <div className="lg:col-span-1">
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
                 <div className="p-4">
                   <nav className="space-y-2">
                     {sections.map((section) => {
                       const Icon = section.icon;
                       const isActive = activeSection === section.id;
                       const colorMap = {
-                        general: { active: 'border-violet-500/50 bg-violet-500/20 text-violet-400', icon: 'bg-violet-500/20 ring-violet-500/30 text-violet-400' },
-                        currency: { active: 'border-emerald-500/50 bg-emerald-500/20 text-emerald-400', icon: 'bg-emerald-500/20 ring-emerald-500/30 text-emerald-400' },
-                        notifications: { active: 'border-amber-500/50 bg-amber-500/20 text-amber-400', icon: 'bg-amber-500/20 ring-amber-500/30 text-amber-400' },
-                        security: { active: 'border-cyan-500/50 bg-cyan-500/20 text-cyan-400', icon: 'bg-cyan-500/20 ring-cyan-500/30 text-cyan-400' },
+                        general: { active: 'border-violet-200 dark:border-violet-500/50 bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-400', icon: 'bg-violet-200/50 dark:bg-violet-500/20 ring-violet-300 dark:ring-violet-500/30 text-violet-600 dark:text-violet-400' },
+                        currency: { active: 'border-emerald-200 dark:border-emerald-500/50 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400', icon: 'bg-emerald-200/50 dark:bg-emerald-500/20 ring-emerald-300 dark:ring-emerald-500/30 text-emerald-600 dark:text-emerald-400' },
+                        notifications: { active: 'border-amber-200 dark:border-amber-500/50 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400', icon: 'bg-amber-200/50 dark:bg-amber-500/20 ring-amber-300 dark:ring-amber-500/30 text-amber-600 dark:text-amber-400' },
+                        security: { active: 'border-cyan-200 dark:border-cyan-500/50 bg-cyan-100 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-400', icon: 'bg-cyan-200/50 dark:bg-cyan-500/20 ring-cyan-300 dark:ring-cyan-500/30 text-cyan-600 dark:text-cyan-400' },
                       };
                       const colors = colorMap[section.id] || colorMap.general;
 
@@ -303,13 +303,9 @@ export default function AdminSettingsPage() {
                           key={section.id}
                           type="button"
                           onClick={() => setActiveSection(section.id)}
-                          className={`group w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 border ${isActive
-                              ? colors.active
-                              : 'border-transparent text-slate-400 hover:text-white hover:bg-slate-700/50'
-                            }`}
+                          className={`group w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 border ${isActive ? colors.active : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50' }`}
                         >
-                          <div className={`flex h-8 w-8 items-center justify-center rounded-lg ring-1 transition-all ${isActive ? colors.icon : 'bg-slate-700/50 ring-slate-600/50 text-slate-400 group-hover:bg-slate-600/50'
-                            }`}>
+                          <div className={`flex h-8 w-8 items-center justify-center rounded-lg ring-1 transition-all ${isActive ? colors.icon : 'bg-slate-100 dark:bg-slate-700/50 ring-slate-200 dark:ring-slate-600/50 text-slate-500 dark:text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-600/50' }`}>
                             <Icon className="w-4 h-4" />
                           </div>
                           {section.name}
@@ -323,7 +319,7 @@ export default function AdminSettingsPage() {
 
             {/* Main Content - Settings Form */}
             <div className="lg:col-span-3 space-y-6">
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
                 <div className="p-6">
                   {/* Section Header */}
                   <div className="flex items-center gap-4 mb-8">
@@ -344,10 +340,10 @@ export default function AdminSettingsPage() {
                           );
                         })()}
                         <div>
-                          <h2 className="text-xl font-bold text-white">
+                          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
                             {activeSectionInfo.name} Settings
                           </h2>
-                          <p className="text-sm text-slate-400">
+                          <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
                             Configure {activeSectionInfo.name.toLowerCase()} preferences
                           </p>
                         </div>
@@ -381,8 +377,8 @@ export default function AdminSettingsPage() {
 
                       return (
                         <div key={key} className="space-y-2">
-                          <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                            <Icon className="w-4 h-4 text-slate-400" />
+                          <label className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+                            <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
                             {setting.label}
                           </label>
 
@@ -390,7 +386,7 @@ export default function AdminSettingsPage() {
                             <Textarea
                               value={formData[key] ?? setting.value ?? ''}
                               onChange={(e) => handleChange(key, e.target.value)}
-                              className="w-full bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-violet-500 focus:ring-violet-500/20"
+                              className="w-full bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-violet-500 focus:ring-violet-500/20"
                               rows={3}
                             />
                           ) : setting.type === 'checkbox' ? (
@@ -408,9 +404,9 @@ export default function AdminSettingsPage() {
                                   }}
                                   className="sr-only peer"
                                 />
-                                <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-violet-500/30 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-slate-400 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-600 peer-checked:after:bg-white"></div>
+                                <div className="w-11 h-6 bg-slate-100 dark:bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-violet-500/30 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-slate-400 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-600 peer-checked:after:bg-white"></div>
                               </div>
-                              <span className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
+                              <span className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
                                 {(formData[key] ?? setting.value) ? 'Enabled' : 'Disabled'}
                               </span>
                             </label>
@@ -426,14 +422,14 @@ export default function AdminSettingsPage() {
                                   : parseFloat(e.target.value) || 0;
                                 handleChange(key, value);
                               }}
-                              className="w-full bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-violet-500 focus:ring-violet-500/20"
+                              className="w-full bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-violet-500 focus:ring-violet-500/20"
                             />
                           ) : setting.type === 'select' ? (
                             <Select
                               value={formData[key] ?? setting.value ?? ''}
                               onChange={(e) => handleChange(key, e.target.value)}
                               options={setting.options || []}
-                              className="w-full bg-slate-900/50 border-slate-600 text-white"
+                              className="w-full bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white"
                             />
                           ) : setting.type === 'maintenance' ? (
                             <div className="space-y-4">
@@ -460,8 +456,8 @@ export default function AdminSettingsPage() {
 
                               {/* Duration Controls - Only show when maintenance is enabled */}
                               {formData[key] && (
-                                <div className="mt-4 p-4 rounded-xl bg-slate-900/70 border border-slate-700/50 space-y-4">
-                                  <div className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                                <div className="mt-4 p-4 rounded-xl bg-slate-900/70 border border-slate-200 dark:border-slate-700/50 space-y-4">
+                                  <div className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
                                     <Timer className="w-4 h-4 text-violet-400" />
                                     Duration
                                   </div>
@@ -484,10 +480,7 @@ export default function AdminSettingsPage() {
                                           type="button"
                                           onClick={() => handleChange('maintenanceDuration', preset.value)}
                                           title={preset.tooltip || `${preset.label} duration`}
-                                          className={`relative flex flex-col items-center justify-center py-3 px-2 rounded-lg border transition-all duration-200 ${isSelected
-                                              ? 'bg-gradient-to-br from-violet-600/30 to-purple-600/30 border-violet-500/50 text-violet-300 shadow-lg shadow-violet-500/20'
-                                              : 'bg-slate-800/50 border-slate-700/50 text-slate-400 hover:border-slate-600 hover:text-slate-300 hover:bg-slate-700/50'
-                                            }`}
+                                          className={`relative flex flex-col items-center justify-center py-3 px-2 rounded-lg border transition-all duration-200 ${isSelected ? 'bg-gradient-to-br from-violet-600/30 to-purple-600/30 border-violet-500/50 text-violet-300 shadow-lg shadow-violet-500/20' : 'bg-slate-800/50 border-slate-200 dark:border-slate-700/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-700/50' }`}
                                         >
                                           <PresetIcon className={`w-4 h-4 mb-1 ${isSelected ? 'text-violet-400' : 'text-slate-500'}`} />
                                           <span className="text-sm font-semibold">{preset.label}</span>
@@ -512,19 +505,19 @@ export default function AdminSettingsPage() {
                                             const val = Math.max(0, Math.min(168, Number(e.target.value)));
                                             handleChange('maintenanceDuration', val);
                                           }}
-                                          className="w-24 px-3 py-2 rounded-lg bg-slate-800 border border-slate-600 text-white text-center font-mono text-lg focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 focus:outline-none"
+                                          className="w-24 px-3 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white text-center font-mono text-lg focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 focus:outline-none"
                                         />
-                                        <span className="text-slate-400 text-sm">hours</span>
+                                        <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-sm">hours</span>
                                       </div>
                                     </div>
                                   </div>
 
                                   {/* Estimated End Time */}
-                                  <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-800/50 border border-slate-700/30">
+                                  <div className="flex items-start gap-3 p-3 rounded-lg bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/30">
                                     <Calendar className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
                                     <div>
-                                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Estimated End Time</p>
-                                      <p className="text-sm font-medium text-slate-200">
+                                      <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wide mb-1">Estimated End Time</p>
+                                      <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
                                         {formData.maintenanceDuration === 0
                                           ? 'No automatic end - Manual disable required'
                                           : new Date(Date.now() + formData.maintenanceDuration * 60 * 60 * 1000).toLocaleString('en-US', {
@@ -541,7 +534,7 @@ export default function AdminSettingsPage() {
                                   </div>
 
                                   {/* Info text */}
-                                  <p className="text-xs text-slate-500 flex items-start gap-2">
+                                  <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-start gap-2">
                                     <Sparkles className="w-3 h-3 mt-0.5 flex-shrink-0 text-violet-400" />
                                     <span>Maintenance mode will automatically disable after the set duration. Set to 0 or ∞ for indefinite maintenance.</span>
                                   </p>
@@ -553,11 +546,11 @@ export default function AdminSettingsPage() {
                               type="text"
                               value={formData[key] ?? setting.value ?? ''}
                               onChange={(e) => handleChange(key, e.target.value)}
-                              className="w-full bg-slate-900/50 border-slate-600 text-white placeholder-slate-500 focus:border-violet-500 focus:ring-violet-500/20"
+                              className="w-full bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-violet-500 focus:ring-violet-500/20"
                             />
                           )}
                           {key === 'maintenanceDuration' && (
-                            <p className="text-xs text-slate-500 mt-1">Enter 0 for indefinite maintenance mode, or number of hours to auto-disable</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-1">Enter 0 for indefinite maintenance mode, or number of hours to auto-disable</p>
                           )}
                         </div>
                       );
@@ -572,7 +565,7 @@ export default function AdminSettingsPage() {
                   type="button"
                   variant="ghost"
                   onClick={handleReset}
-                  className="text-slate-400 border border-slate-600 hover:text-white hover:bg-slate-700/50 hover:border-slate-500"
+                  className="text-slate-500 dark:text-slate-400 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50 hover:border-slate-400 dark:hover:border-slate-500"
                 >
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Reset to Defaults

@@ -121,17 +121,17 @@ export default function DashboardPage() {
               <div className="flex items-center gap-5">
                 <div className="relative">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/30">
-                    <Rocket className="h-8 w-8 text-white" />
+                    <Rocket className="h-8 w-8 text-slate-900 dark:text-white" />
                   </div>
                   <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 ring-4 ring-white dark:ring-slate-900">
-                    <CheckCircle className="h-4 w-4 text-white" />
+                    <CheckCircle className="h-4 w-4 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
               <h1 className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-500 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Welcome back, {user?.username || 'User'}
                   </h1>
-                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400 dark:text-slate-400">
                     {totalOrders ? (
                       <span className="flex items-center gap-2">
                         <Crown className="h-4 w-4 text-amber-500 dark:text-amber-400" />
@@ -177,7 +177,7 @@ export default function DashboardPage() {
               <div className="relative rounded-2xl border border-slate-200 dark:border-white/20 bg-white/90 dark:bg-slate-900/80 p-6 shadow-xl dark:shadow-2xl backdrop-blur-xl">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">Available Balance</p>
+                    <p className="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 dark:text-slate-400">Available Balance</p>
                     <p className="mt-2 text-4xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent">
                       {formatAmount(user?.balance || 0)}
                     </p>
@@ -190,7 +190,7 @@ export default function DashboardPage() {
                 <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700/50">
                   <div className="flex items-center gap-2 text-sm">
                     {netChange === 0 ? (
-                      <span className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                      <span className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         <Activity className="h-4 w-4" />
                         No recent activity
                       </span>
@@ -273,7 +273,7 @@ export default function DashboardPage() {
             
             <div className="relative flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">{stat.title}</p>
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">{stat.title}</p>
                 <p className={`mt-2 text-3xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
                   {stat.value}
                 </p>
@@ -300,7 +300,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h2 className="font-semibold text-slate-800 dark:text-white">Recent Orders</h2>
-                <p className="text-sm text-slate-500 dark:text-slate-400">Your latest transactions</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">Your latest transactions</p>
               </div>
             </div>
             <Link href="/orders" className="group flex items-center gap-1 rounded-lg bg-cyan-500/10 px-4 py-2 text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500/20 transition-all duration-300">
@@ -312,10 +312,10 @@ export default function DashboardPage() {
             {recentOrders.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-4">
-                  <Package className="h-8 w-8 text-slate-400 dark:text-slate-500" />
+                  <Package className="h-8 w-8 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">No orders yet</p>
-                <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">Your orders will appear here</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-1">Your orders will appear here</p>
                 <Link href="/orders/new">
                   <Button className="mt-4 bg-cyan-500 hover:bg-cyan-400 text-white border-none">
                     <Zap className="mr-2 h-4 w-4" />
@@ -335,7 +335,7 @@ export default function DashboardPage() {
                     </div>
                     <div>
                       <p className="font-medium text-slate-800 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-100 transition-colors">{order.service?.name || 'Service'}</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                      <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         {formatOrderId(order.id)} • {formatDate(order.createdAt, { month: 'short', day: 'numeric' })}
                       </p>
                     </div>
@@ -346,7 +346,7 @@ export default function DashboardPage() {
                         <p className="font-semibold text-slate-800 dark:text-white">{formatAmount(order.charge)}</p>
                       )}
                       {order.quantity !== undefined && (
-                        <p className="text-sm text-slate-500 dark:text-slate-400">{order.quantity.toLocaleString()} units</p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">{order.quantity.toLocaleString()} units</p>
                       )}
                     </div>
                     <Badge status={order.status}>{order.status}</Badge>
@@ -366,7 +366,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h2 className="font-semibold text-slate-800 dark:text-white">Wallet Activity</h2>
-                <p className="text-sm text-slate-500 dark:text-slate-400">Recent transactions</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">Recent transactions</p>
               </div>
             </div>
             <Link href="/wallet" className="group flex items-center gap-1 rounded-lg bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-all duration-300">
@@ -378,7 +378,7 @@ export default function DashboardPage() {
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 p-4">
-                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
                   <ArrowDownRight className="h-3 w-3 text-amber-500 dark:text-amber-400" />
                   Spent
                 </div>
@@ -387,7 +387,7 @@ export default function DashboardPage() {
                 </p>
               </div>
               <div className="rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 p-4">
-                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
                   <ArrowUpRight className="h-3 w-3 text-emerald-500 dark:text-emerald-400" />
                   Net
                 </div>
@@ -401,10 +401,10 @@ export default function DashboardPage() {
             {recentTransactions.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-8 text-center">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-3">
-                  <Activity className="h-7 w-7 text-slate-400 dark:text-slate-500" />
+                  <Activity className="h-7 w-7 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">No transactions</p>
-                <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">Activity will show here</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-1">Activity will show here</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -425,7 +425,7 @@ export default function DashboardPage() {
                         <p className="font-medium text-slate-800 dark:text-white text-sm">
                           {tx.type?.replace('_', ' ') || 'Transaction'}
                         </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                        <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                           {formatDate(tx.createdAt)}
                         </p>
                       </div>
@@ -452,7 +452,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h2 className="font-semibold text-slate-800 dark:text-white">Order Pipeline</h2>
-                <p className="text-sm text-slate-500 dark:text-slate-400">Live order status breakdown</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">Live order status breakdown</p>
               </div>
             </div>
             <div className="flex items-center gap-2 rounded-full bg-violet-500/10 px-4 py-1.5 text-sm font-medium text-violet-600 dark:text-violet-400 ring-1 ring-violet-500/20">
@@ -464,10 +464,10 @@ export default function DashboardPage() {
             {recentOrders.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-4">
-                  <BarChart3 className="h-8 w-8 text-slate-400 dark:text-slate-500" />
+                  <BarChart3 className="h-8 w-8 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">No pipeline data</p>
-                <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">Place an order to see the breakdown</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-1">Place an order to see the breakdown</p>
               </div>
             ) : (
               <div className="space-y-5">
@@ -488,8 +488,8 @@ export default function DashboardPage() {
                           <span className="font-medium text-slate-800 dark:text-white">{item.label}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-sm text-slate-500 dark:text-slate-400">{item.count} orders</span>
-                          <span className="text-xs text-slate-400 dark:text-slate-500">({width}%)</span>
+                          <span className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">{item.count} orders</span>
+                          <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">({width}%)</span>
                         </div>
                       </div>
                       <div className="h-3 rounded-full bg-slate-200 dark:bg-slate-700/50 overflow-hidden">
@@ -529,10 +529,10 @@ export default function DashboardPage() {
             {timeline.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-3">
-                  <Activity className="h-7 w-7 text-slate-400 dark:text-slate-500" />
+                  <Activity className="h-7 w-7 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">No activity yet</p>
-                <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">Events will appear here</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500 mt-1">Events will appear here</p>
               </div>
             ) : (
               <div className="relative space-y-4">
@@ -553,7 +553,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-slate-800 dark:text-white truncate">{item.title}</p>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-0.5">
                         {item.subtitle} • {formatDate(item.createdAt, { hour: '2-digit', minute: '2-digit', month: 'short', day: 'numeric' })}
                       </p>
                     </div>

@@ -69,23 +69,55 @@ export default function AdminLogsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Activity Logs</h1>
-          <p className="text-gray-500 dark:text-gray-400">
-            Track admin actions and system events
-          </p>
+      {/* Premium Hero Header */}
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/90 dark:to-slate-900 shadow-2xl">
+        {/* Animated Background Effects */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20 blur-3xl animate-pulse" />
+          <div className="absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/5 dark:from-indigo-500/20 dark:to-purple-500/10 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiLz48cGF0aCBkPSJNNDAgMEgwdjQwaDQwVjB6TTEgMXYzOGgzOFYxSDF6IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+PC9nPjwvc3ZnPg==')] opacity-50" />
         </div>
-        <Select
-          value={action}
-          onChange={(e) => {
-            setAction(e.target.value);
-            setPage(1);
-          }}
-          options={actionOptions}
-          className="w-48"
-        />
+
+        <div className="relative px-6 py-8 md:px-8 md:py-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-blue-600 dark:text-blue-300 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-400"></span>
+                </span>
+                System Monitor
+              </div>
+              
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/30">
+                  <FileText className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
+                    Activity Logs
+                  </h1>
+                  <p className="text-base text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <Shield className="h-4 w-4 text-blue-500" />
+                    Track admin actions and system events
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Select
+                value={action}
+                onChange={(e) => {
+                  setAction(e.target.value);
+                  setPage(1);
+                }}
+                options={actionOptions}
+                className="w-48"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Logs */}
