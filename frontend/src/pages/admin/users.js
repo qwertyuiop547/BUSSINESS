@@ -366,7 +366,7 @@ export default function AdminUsersPage() {
                   />
                 ) : (
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary-500 to-indigo-600 flex items-center justify-center border-4 border-primary-100 dark:border-primary-900">
-                    <User className="w-10 h-10 text-white" />
+                    <User className="w-10 h-10 text-slate-900 dark:text-white" />
                   </div>
                 )}
                 <Badge
@@ -443,11 +443,7 @@ export default function AdminUsersPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-                      activeTab === tab.id
-                        ? 'border-primary-600 text-primary-600 dark:text-primary-400'
-                        : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
-                    }`}
+                    className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${ activeTab === tab.id ? 'border-primary-600 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300' }`}
                   >
                     <tab.icon className="w-4 h-4" />
                     {tab.label}

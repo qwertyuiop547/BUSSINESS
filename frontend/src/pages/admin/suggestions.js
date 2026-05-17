@@ -155,7 +155,7 @@ export default function AdminSuggestionsPage() {
   return (
     <div className="space-y-6">
       {/* Premium Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900 via-slate-800/90 to-slate-900 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/90 dark:to-slate-900 shadow-2xl">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-gradient-to-br from-amber-500/30 to-orange-500/20 blur-3xl animate-pulse" />
           <div className="absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-gradient-to-br from-violet-500/20 to-fuchsia-500/10 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -175,13 +175,13 @@ export default function AdminSuggestionsPage() {
               
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/30">
-                  <Lightbulb className="h-7 w-7 text-white" />
+                  <Lightbulb className="h-7 w-7 text-slate-900 dark:text-white" />
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
+                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Suggestions
                   </h1>
-                  <p className="text-base text-slate-400 flex items-center gap-2">
+                  <p className="text-base text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                     <Target className="h-4 w-4 text-amber-400" />
                     Review and manage user feedback
                   </p>
@@ -193,7 +193,7 @@ export default function AdminSuggestionsPage() {
               variant="ghost"
               onClick={handleRefresh}
               disabled={isFetching}
-              className="text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm"
+              className="text-slate-900 dark:text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm"
             >
               <RefreshCw className={`w-4 h-4 mr-2 ${isFetching ? 'animate-spin' : ''}`} />
               Refresh
@@ -205,14 +205,14 @@ export default function AdminSuggestionsPage() {
       {/* Stats Cards */}
       {stats && (
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          <div className="p-4 rounded-xl border border-slate-700/50 bg-slate-800/50">
+          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-slate-700/50">
-                <Inbox className="w-5 h-5 text-slate-400" />
+              <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-700/50">
+                <Inbox className="w-5 h-5 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-white">{stats.total}</p>
-                <p className="text-xs text-slate-400">Total</p>
+                <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">Total</p>
               </div>
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function AdminSuggestionsPage() {
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Status Filters */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-slate-500 uppercase tracking-wider mr-1">Status:</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider mr-1">Status:</span>
             {statusOptions.map((option) => {
               const Icon = option.icon;
               const isActive = status === option.value;
@@ -297,11 +297,7 @@ export default function AdminSuggestionsPage() {
                 <button
                   key={option.value}
                   onClick={() => { setStatus(option.value); setPage(1); }}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border transition-all duration-200 text-xs ${
-                    isActive
-                      ? colors.active
-                      : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600'
-                  }`}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border transition-all duration-200 text-xs ${ isActive ? colors.active : 'border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:border-slate-600' }`}
                 >
                   <Icon className={`w-3.5 h-3.5 ${isActive ? colors.icon : 'text-slate-500'}`} />
                   <span className="font-medium">{option.label}</span>
@@ -312,7 +308,7 @@ export default function AdminSuggestionsPage() {
 
           {/* Category Filters */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-slate-500 uppercase tracking-wider mr-1">Type:</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider mr-1">Type:</span>
             {categoryOptions.slice(0, 4).map((option) => {
               const Icon = option.icon;
               const isActive = category === option.value;
@@ -328,11 +324,7 @@ export default function AdminSuggestionsPage() {
                 <button
                   key={option.value}
                   onClick={() => { setCategory(option.value); setPage(1); }}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border transition-all duration-200 text-xs ${
-                    isActive
-                      ? colors.active
-                      : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600'
-                  }`}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border transition-all duration-200 text-xs ${ isActive ? colors.active : 'border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:border-slate-600' }`}
                 >
                   <Icon className={`w-3.5 h-3.5 ${isActive ? colors.icon : 'text-slate-500'}`} />
                   <span className="font-medium">{option.label}</span>
@@ -342,7 +334,7 @@ export default function AdminSuggestionsPage() {
             <select
               value={category}
               onChange={(e) => { setCategory(e.target.value); setPage(1); }}
-              className="px-2.5 py-1.5 rounded-lg border border-slate-700/50 bg-slate-800/50 text-slate-300 text-xs focus:outline-none focus:border-amber-500"
+              className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 text-xs focus:outline-none focus:border-amber-500"
             >
               <option value="">More...</option>
               {categoryOptions.slice(4).map((opt) => (
@@ -354,26 +346,26 @@ export default function AdminSuggestionsPage() {
 
         {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search suggestions..."
-            className="pl-10 pr-4 py-2 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-500 w-full sm:w-64"
+            className="pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 text-slate-900 dark:text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-500 w-full sm:w-64"
           />
         </div>
       </div>
 
       {/* Suggestions List */}
-      <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
         {suggestions.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-700/50 ring-1 ring-slate-600/50 mb-6">
-              <Lightbulb className="h-10 w-10 text-slate-500" />
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 ring-1 ring-slate-200 dark:ring-slate-600/50 mb-6">
+              <Lightbulb className="h-10 w-10 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No suggestions found</h3>
-            <p className="text-slate-400 text-center max-w-sm">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">No suggestions found</h3>
+            <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-center max-w-sm">
               {status || category || search 
                 ? 'No suggestions match your current filters.'
                 : 'No suggestions have been submitted yet.'}
@@ -390,13 +382,13 @@ export default function AdminSuggestionsPage() {
           </div>
         ) : (
           <>
-            <div className="divide-y divide-slate-700/50">
+            <div className="divide-y divide-slate-200 dark:divide-slate-700/50">
               {suggestions.map((suggestion) => (
-                <div key={suggestion.id} className="p-5 hover:bg-slate-700/30 transition-colors">
+                <div key={suggestion.id} className="p-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <h3 className="font-semibold text-white">{suggestion.title}</h3>
+                        <h3 className="font-semibold text-slate-900 dark:text-white">{suggestion.title}</h3>
                         <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border ${getCategoryStyle(suggestion.category)}`}>
                           {suggestion.category.replace('_', ' ')}
                         </span>
@@ -404,10 +396,10 @@ export default function AdminSuggestionsPage() {
                           {suggestion.status.replace('_', ' ')}
                         </span>
                       </div>
-                      <p className="text-sm text-slate-400 line-clamp-2 mb-3">
+                      <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 line-clamp-2 mb-3">
                         {suggestion.description}
                       </p>
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         <span className="flex items-center gap-1.5">
                           <User className="w-3.5 h-3.5" />
                           {suggestion.user?.username || suggestion.user?.email}
@@ -418,9 +410,9 @@ export default function AdminSuggestionsPage() {
                         </span>
                       </div>
                       {suggestion.adminNote && (
-                        <div className="mt-3 p-3 rounded-lg bg-slate-900/50 border border-slate-700/50">
-                          <p className="text-xs text-slate-500 mb-1">Admin Note:</p>
-                          <p className="text-sm text-slate-300">{suggestion.adminNote}</p>
+                        <div className="mt-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50">
+                          <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-1">Admin Note:</p>
+                          <p className="text-sm text-slate-600 dark:text-slate-300">{suggestion.adminNote}</p>
                         </div>
                       )}
                     </div>
@@ -453,7 +445,7 @@ export default function AdminSuggestionsPage() {
             </div>
 
             {pagination.pages > 1 && (
-              <div className="p-4 border-t border-slate-700/50 bg-slate-900/30">
+              <div className="p-4 border-t border-slate-200 dark:border-slate-700/50 bg-slate-900/30">
                 <Pagination
                   currentPage={page}
                   totalPages={pagination.pages}
@@ -475,23 +467,23 @@ export default function AdminSuggestionsPage() {
         {selectedSuggestion && (
           <div className="space-y-6">
             {/* Header with Gradient */}
-            <div className="relative overflow-hidden rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-800 via-slate-800/90 to-slate-900 p-6">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-800 via-slate-800/90 to-slate-900 p-6">
               <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/10 blur-2xl" />
               </div>
               <div className="relative flex items-start gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/30 flex-shrink-0">
-                  <Edit className="h-7 w-7 text-white" />
+                  <Edit className="h-7 w-7 text-slate-900 dark:text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold text-white">Update Suggestion</h3>
-                  <p className="text-slate-400 text-sm mt-1 line-clamp-2">{selectedSuggestion.title}</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Update Suggestion</h3>
+                  <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-sm mt-1 line-clamp-2">{selectedSuggestion.title}</p>
                   <div className="flex flex-wrap items-center gap-2 mt-3">
                     <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border ${getCategoryStyle(selectedSuggestion.category)}`}>
                       {selectedSuggestion.category.replace('_', ' ')}
                     </span>
-                    <span className="text-xs text-slate-500">•</span>
-                    <span className="text-xs text-slate-500 flex items-center gap-1">
+                    <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">•</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-1">
                       <User className="w-3 h-3" />
                       {selectedSuggestion.user?.username || selectedSuggestion.user?.email}
                     </span>
@@ -502,7 +494,7 @@ export default function AdminSuggestionsPage() {
 
             {/* Status Selection - Visual Cards */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-3">
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">
                 <BarChart3 className="w-4 h-4 text-blue-400" />
                 Select Status
               </label>
@@ -549,27 +541,17 @@ export default function AdminSuggestionsPage() {
                       key={opt.value}
                       type="button"
                       onClick={() => setUpdateData({ ...updateData, status: opt.value })}
-                      className={`relative p-3 rounded-xl border transition-all duration-200 text-left group ${
-                        isSelected
-                          ? colors.selected
-                          : 'border-slate-700/50 bg-slate-800/50 hover:border-slate-600 hover:bg-slate-700/50'
-                      }`}
+                      className={`relative p-3 rounded-xl border transition-all duration-200 text-left group ${ isSelected ? colors.selected : 'border-slate-700/50 bg-white dark:bg-slate-800/50 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-700/50' }`}
                     >
                       <div className="flex items-center gap-2.5">
-                        <div className={`flex items-center justify-center w-8 h-8 rounded-lg transition-colors ${
-                          isSelected ? colors.icon : 'bg-slate-700/50 text-slate-400 group-hover:bg-slate-700'
-                        }`}>
+                        <div className={`flex items-center justify-center w-8 h-8 rounded-lg transition-colors ${ isSelected ? colors.icon : 'bg-slate-700/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 group-hover:bg-slate-700' }`}>
                           <Icon className="w-4 h-4" />
                         </div>
                         <div>
-                          <p className={`font-medium text-sm ${
-                            isSelected ? colors.text : 'text-slate-300'
-                          }`}>
+                          <p className={`font-medium text-sm ${ isSelected ? colors.text : 'text-slate-300' }`}>
                             {opt.label}
                           </p>
-                          <p className={`text-xs mt-0.5 ${
-                            isSelected ? colors.desc : 'text-slate-500'
-                          }`}>
+                          <p className={`text-xs mt-0.5 ${ isSelected ? colors.desc : 'text-slate-500' }`}>
                             {opt.description}
                           </p>
                         </div>
@@ -587,29 +569,29 @@ export default function AdminSuggestionsPage() {
 
             {/* Admin Note */}
             <div>
-              <label className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2">
-                <Edit className="w-4 h-4 text-slate-400" />
+              <label className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
+                <Edit className="w-4 h-4 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
                 Admin Note
-                <span className="text-xs text-slate-500 font-normal">(optional)</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 font-normal">(optional)</span>
               </label>
               <textarea
                 value={updateData.adminNote}
                 onChange={(e) => setUpdateData({ ...updateData, adminNote: e.target.value })}
                 placeholder="Add a note for the user explaining your decision..."
                 rows={3}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/50 text-white placeholder-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none resize-none transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50 text-slate-900 dark:text-white placeholder-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none resize-none transition-all"
               />
-              <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-1.5 flex items-center gap-1">
                 <Target className="w-3 h-3" />
                 This note will be visible to the user who submitted the suggestion
               </p>
             </div>
 
             {/* Actions */}
-            <div className="flex gap-3 justify-end pt-4 border-t border-slate-700/50">
+            <div className="flex gap-3 justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
               <button
                 onClick={() => setShowUpdateModal(false)}
-                className="px-5 py-2.5 rounded-xl text-slate-400 border border-slate-600 hover:text-white hover:bg-slate-700/50 hover:border-slate-500 transition-all duration-200 font-medium"
+                className="px-5 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50 hover:border-slate-400 dark:hover:border-slate-500 transition-all duration-200 font-medium"
               >
                 Cancel
               </button>
@@ -646,10 +628,10 @@ export default function AdminSuggestionsPage() {
           <div className="space-y-6">
             <div className="text-center">
               <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 shadow-lg shadow-red-500/30 mb-4">
-                <Trash2 className="h-8 w-8 text-white" />
+                <Trash2 className="h-8 w-8 text-slate-900 dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white">Delete Suggestion</h3>
-              <p className="text-sm text-slate-400 mt-2">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Delete Suggestion</h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-2">
                 Are you sure you want to delete "{selectedSuggestion.title}"? This action cannot be undone.
               </p>
             </div>
@@ -657,7 +639,7 @@ export default function AdminSuggestionsPage() {
             <div className="flex gap-3 justify-center">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="px-4 py-2.5 rounded-xl text-slate-400 border border-slate-600 hover:text-white hover:bg-slate-700/50 transition-colors"
+                className="px-4 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
               >
                 Cancel
               </button>

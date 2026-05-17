@@ -321,13 +321,13 @@ export default function NewOrderPage() {
             {/* Left - Title */}
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/25">
-                <ShoppingCart className="h-6 w-6 text-white" />
+                <ShoppingCart className="h-6 w-6 text-slate-900 dark:text-white" />
               </div>
               <div>
                 <h1 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white">
                   New Order
                 </h1>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
                   Select a service to boost your presence
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function NewOrderPage() {
                 <Wallet className="h-5 w-5 text-emerald-500" />
               </div>
               <div>
-                <p className="text-xs text-slate-500 dark:text-slate-400">Balance</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">Balance</p>
                 <p className="text-lg font-bold text-emerald-500">
                   {formatAmount(user?.balance || 0)}
                 </p>
@@ -367,8 +367,8 @@ export default function NewOrderPage() {
               <div className="p-4">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {categories.length === 0 ? (
-                    <div className="col-span-full p-8 text-center text-slate-400">
-                      <Package className="w-12 h-12 mx-auto mb-3 text-slate-500" />
+                    <div className="col-span-full p-8 text-center text-slate-500 dark:text-slate-400">
+                      <Package className="w-12 h-12 mx-auto mb-3 text-slate-500 dark:text-slate-400" />
                       <p>No categories available</p>
                     </div>
                   ) : (
@@ -384,17 +384,14 @@ export default function NewOrderPage() {
                           setFacebookConfirmed(false);
                           setServiceSearch(''); // Clear search when changing category
                         }}
-                        className={`group relative p-3 rounded-lg border transition-all duration-200 text-left ${selectedCategory === category
-                          ? 'border-cyan-500 bg-cyan-500/10'
-                          : 'border-slate-200 dark:border-slate-700/50 hover:border-cyan-400/50 hover:bg-slate-50 dark:hover:bg-slate-700/30'
-                          }`}
+                        className={`group relative p-3 rounded-lg border transition-all duration-200 text-left ${selectedCategory === category ? 'border-cyan-500 bg-cyan-500/10' : 'border-slate-200 dark:border-slate-700/50 hover:border-cyan-400/50 hover:bg-slate-50 dark:hover:bg-slate-700/30' }`}
                       >
                         <div className="flex items-center justify-between">
                           <div>
                             <p className={`font-medium text-sm ${selectedCategory === category ? 'text-cyan-500' : 'text-slate-800 dark:text-white'}`}>
                               {category}
                             </p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                               {categoryServiceCounts[category] || 0} services
                             </p>
                           </div>
@@ -482,10 +479,7 @@ export default function NewOrderPage() {
                               setTimeout(() => setShowPlusOne(false), 600);
                               setTimeout(() => setClickEffects(prev => prev.filter(e => !newEffects.includes(e))), 800);
                             }}
-                            className={`relative flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-150 bg-white dark:bg-slate-800 text-slate-800 dark:text-white border-2 border-slate-200 dark:border-slate-600 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/20 overflow-hidden ${isAnimating
-                              ? 'scale-110 border-amber-400 shadow-lg shadow-amber-500/40'
-                              : 'active:scale-95'
-                              }`}
+                            className={`relative flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-150 bg-white dark:bg-slate-800 text-slate-800 dark:text-white border-2 border-slate-200 dark:border-slate-600 hover:border-amber-400 hover:shadow-lg hover:shadow-amber-500/20 overflow-hidden ${isAnimating ? 'scale-110 border-amber-400 shadow-lg shadow-amber-500/40' : 'active:scale-95' }`}
                           >
                             {/* Ripple effect */}
                             {isAnimating && (
@@ -504,8 +498,8 @@ export default function NewOrderPage() {
                       </div>
                     </div>
                   ) : serviceTypes.length === 0 ? (
-                    <div className="p-8 text-center text-slate-400">
-                      <Layers className="w-12 h-12 mx-auto mb-3 text-slate-500" />
+                    <div className="p-8 text-center text-slate-500 dark:text-slate-400">
+                      <Layers className="w-12 h-12 mx-auto mb-3 text-slate-500 dark:text-slate-400" />
                       <p>No service types available</p>
                     </div>
                   ) : (
@@ -544,20 +538,14 @@ export default function NewOrderPage() {
                               setValue('serviceId', '');
                               setServiceSearch(''); // Clear search when changing type
                             }}
-                            className={`group relative p-4 rounded-xl border-2 transition-all duration-300 text-left hover:scale-[1.02] active:scale-[0.98] ${
-                              isSelected
-                                ? colors.selected
-                                : 'border-slate-200 dark:border-slate-700/50 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/50 hover:bg-slate-50 dark:hover:bg-slate-700/30'
-                            }`}
+                            className={`group relative p-4 rounded-xl border-2 transition-all duration-300 text-left hover:scale-[1.02] active:scale-[0.98] ${ isSelected ? colors.selected : 'border-slate-200 dark:border-slate-700/50 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/50 hover:bg-slate-50 dark:hover:bg-slate-700/30' }`}
                           >
                             <div className="flex items-start gap-3">
                               <div className={`flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${colors.bg}`}>
                                 <Icon className={`w-5 h-5 ${colors.icon}`} />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className={`font-semibold text-sm capitalize truncate ${
-                                  isSelected ? colors.text : 'text-slate-800 dark:text-white'
-                                }`}>
+                                <p className={`font-semibold text-sm capitalize truncate ${ isSelected ? colors.text : 'text-slate-800 dark:text-white' }`}>
                                   {config.label}
                                 </p>
                                 <p className={`text-xs mt-0.5 ${colors.icon}`}>
@@ -590,7 +578,7 @@ export default function NewOrderPage() {
                       </div>
                       <h2 className="font-semibold text-slate-800 dark:text-white">Select Service</h2>
                     </div>
-                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                    <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                       {filteredTypeServices.length} of {typeServices.length}
                     </span>
                   </div>
@@ -619,11 +607,11 @@ export default function NewOrderPage() {
                           onClick={() => setServiceSearch('')}
                           className="absolute right-3 w-7 h-7 flex items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white transition-all duration-200 group/clear"
                         >
-                          <X className="w-3.5 h-3.5 text-slate-500 group-hover/clear:text-white" />
+                          <X className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 group-hover/clear:text-white" />
                         </button>
                       ) : (
                         <div className="absolute right-3 px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600/50">
-                          <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">LIVE</span>
+                          <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 dark:text-slate-500">LIVE</span>
                         </div>
                       )}
                     </div>
@@ -632,7 +620,7 @@ export default function NewOrderPage() {
                   {/* Search info */}
                   {serviceSearch && (
                     <div className="mt-2 flex items-center justify-between text-xs">
-                      <span className="text-slate-500 dark:text-slate-400">
+                      <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         Found <span className="font-semibold text-amber-500">{filteredTypeServices.length}</span> services matching "{serviceSearch}"
                       </span>
                       {filteredTypeServices.length !== typeServices.length && (
@@ -654,10 +642,10 @@ export default function NewOrderPage() {
                       {serviceSearch ? (
                         <div className="space-y-3">
                           <div className="w-16 h-16 mx-auto rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                            <Search className="w-8 h-8 text-slate-400" />
+                            <Search className="w-8 h-8 text-slate-500 dark:text-slate-400" />
                           </div>
                           <p className="text-slate-600 dark:text-slate-300 font-medium">No results for "{serviceSearch}"</p>
-                          <p className="text-sm text-slate-400">Try searching for different keywords</p>
+                          <p className="text-sm text-slate-500 dark:text-slate-400">Try searching for different keywords</p>
                           <button
                             type="button"
                             onClick={() => setServiceSearch('')}
@@ -669,9 +657,9 @@ export default function NewOrderPage() {
                       ) : (
                         <div className="space-y-3">
                           <div className="w-16 h-16 mx-auto rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-                            <ShoppingCart className="w-8 h-8 text-slate-400" />
+                            <ShoppingCart className="w-8 h-8 text-slate-500 dark:text-slate-400" />
                           </div>
-                          <p className="text-slate-400">No services available</p>
+                          <p className="text-slate-500 dark:text-slate-400">No services available</p>
                         </div>
                       )}
                     </div>
@@ -684,17 +672,14 @@ export default function NewOrderPage() {
                           handleServiceChange(service.id);
                           setValue('serviceId', service.id);
                         }}
-                        className={`w-full p-3 transition-all duration-200 text-left ${selectedService?.id === service.id
-                          ? 'bg-amber-500/10'
-                          : 'hover:bg-slate-50 dark:hover:bg-slate-700/30'
-                          }`}
+                        className={`w-full p-3 transition-all duration-200 text-left ${selectedService?.id === service.id ? 'bg-amber-500/10' : 'hover:bg-slate-50 dark:hover:bg-slate-700/30' }`}
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex-1 min-w-0">
                             <p className={`font-medium text-sm truncate ${selectedService?.id === service.id ? 'text-amber-500' : 'text-slate-800 dark:text-white'}`}>
                               {getPlatformIcon(service.platform)} {service.name}
                             </p>
-                            <div className="flex items-center gap-3 mt-1 text-xs text-slate-500 dark:text-slate-400">
+                            <div className="flex items-center gap-3 mt-1 text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                               <span>{service.minQuantity} - {service.maxQuantity}</span>
                               {service.averageTime && <span>{service.averageTime}</span>}
                             </div>
@@ -703,7 +688,7 @@ export default function NewOrderPage() {
                             <p className="font-bold text-amber-500">
                               {formatAmount(service.rate)}
                             </p>
-                            <p className="text-xs text-slate-500">per 1K</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">per 1K</p>
                           </div>
                         </div>
                       </button>
@@ -738,7 +723,7 @@ export default function NewOrderPage() {
                       </div>
                       <div className="space-y-1 text-sm">
                         <p className="font-medium text-slate-800 dark:text-white">{selectedService.name}</p>
-                        <div className="flex flex-wrap gap-x-4 gap-y-1 text-slate-500 dark:text-slate-400">
+                        <div className="flex flex-wrap gap-x-4 gap-y-1 text-slate-500 dark:text-slate-400 dark:text-slate-400">
                           <span className="flex items-center gap-1">
                             <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
                             {formatAmount(selectedService.rate)}/1K
@@ -775,7 +760,7 @@ export default function NewOrderPage() {
                             <button
                               type="button"
                               onClick={() => setFbWarningLang(fbWarningLang === 'tl' ? 'en' : 'tl')}
-                              className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg bg-slate-800 border border-orange-600/50 text-orange-300 hover:bg-orange-900/30 transition-colors"
+                              className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg bg-white dark:bg-slate-800 border border-orange-600/50 text-orange-300 hover:bg-orange-900/30 transition-colors"
                             >
                               <Languages className="w-3.5 h-3.5" />
                               {fbWarningLang === 'tl' ? 'English' : 'Tagalog'}
@@ -823,14 +808,14 @@ export default function NewOrderPage() {
                           </div>
 
                           {/* Confirmation Checkbox */}
-                          <label className="flex items-start gap-3 p-3 bg-slate-800 rounded-lg border-2 border-orange-600/50 cursor-pointer hover:bg-orange-900/20 transition-colors">
+                          <label className="flex items-start gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg border-2 border-orange-600/50 cursor-pointer hover:bg-orange-900/20 transition-colors">
                             <input
                               type="checkbox"
                               checked={facebookConfirmed}
                               onChange={(e) => setFacebookConfirmed(e.target.checked)}
-                              className="w-5 h-5 mt-0.5 rounded border-orange-500 bg-slate-700 text-orange-600 focus:ring-orange-500 cursor-pointer"
+                              className="w-5 h-5 mt-0.5 rounded border-orange-500 bg-slate-100 dark:bg-slate-700 text-orange-600 focus:ring-orange-500 cursor-pointer"
                             />
-                            <span className="text-sm text-slate-200 font-medium">
+                            <span className="text-sm text-slate-700 dark:text-slate-200 font-medium">
                               {fbText.confirmCheckbox}
                             </span>
                           </label>
@@ -849,10 +834,7 @@ export default function NewOrderPage() {
                       type="url"
                       placeholder={getLinkPlaceholder()}
                       {...register('link')}
-                      className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/50 border text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.link
-                        ? 'border-red-500 focus:ring-red-500/50 focus:border-red-500'
-                        : 'border-slate-200 dark:border-slate-700/50 focus:ring-cyan-500/50 focus:border-cyan-500'
-                        }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/50 border text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.link ? 'border-red-500 focus:ring-red-500/50 focus:border-red-500' : 'border-slate-200 dark:border-slate-700/50 focus:ring-cyan-500/50 focus:border-cyan-500' }`}
                     />
                     {errors.link && (
                       <p className="mt-1.5 text-sm text-red-400 flex items-center gap-1">
@@ -872,10 +854,7 @@ export default function NewOrderPage() {
                       type="number"
                       max={selectedService?.maxQuantity || 100000}
                       {...register('quantity', { valueAsNumber: true })}
-                      className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/50 border text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.quantity
-                        ? 'border-red-500 focus:ring-red-500/50 focus:border-red-500'
-                        : 'border-slate-200 dark:border-slate-700/50 focus:ring-cyan-500/50 focus:border-cyan-500'
-                        }`}
+                      className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-900/50 border text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 transition-all ${errors.quantity ? 'border-red-500 focus:ring-red-500/50 focus:border-red-500' : 'border-slate-200 dark:border-slate-700/50 focus:ring-cyan-500/50 focus:border-cyan-500' }`}
                     />
                     {errors.quantity && (
                       <p className="mt-1.5 text-sm text-red-400 flex items-center gap-1">
@@ -919,7 +898,7 @@ export default function NewOrderPage() {
                   <div className="p-6 space-y-4">
                     {/* Balance */}
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                      <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                         <Wallet className="w-4 h-4 text-emerald-400" />
                         Your Balance
                       </span>
@@ -932,7 +911,7 @@ export default function NewOrderPage() {
 
                         {/* Service */}
                         <div className="flex justify-between">
-                          <span className="text-slate-500 dark:text-slate-400">Service</span>
+                          <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400">Service</span>
                           <span className="font-medium text-right max-w-[150px] truncate text-sm text-slate-800 dark:text-white">
                             {selectedService.name}
                           </span>
@@ -940,19 +919,19 @@ export default function NewOrderPage() {
 
                         {/* Quantity */}
                         <div className="flex justify-between">
-                          <span className="text-slate-500 dark:text-slate-400">Quantity</span>
+                          <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400">Quantity</span>
                           <span className="font-medium text-slate-800 dark:text-white">{(watchQuantity || 0).toLocaleString()}</span>
                         </div>
 
                         {/* Rate */}
                         <div className="flex justify-between">
-                          <span className="text-slate-500 dark:text-slate-400">Rate</span>
+                          <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400">Rate</span>
                           <span className="font-medium text-slate-800 dark:text-white">{formatAmount(selectedService.rate)}/1K</span>
                         </div>
 
                         {/* Subtotal */}
                         <div className="flex justify-between">
-                          <span className="text-slate-500 dark:text-slate-400">Subtotal</span>
+                          <span className="text-slate-500 dark:text-slate-400 dark:text-slate-400">Subtotal</span>
                           <span className="font-medium text-slate-800 dark:text-white">{formatAmount(baseTotal)}</span>
                         </div>
 
@@ -980,7 +959,7 @@ export default function NewOrderPage() {
                       </>
                     )}
 
-                    <hr className="border-slate-700/50" />
+                    <hr className="border-slate-200 dark:border-slate-700/50" />
 
                     {/* Total */}
                     <div className="flex justify-between items-center p-3 -mx-3 rounded-xl bg-gradient-to-r from-cyan-500/5 to-violet-500/5">
@@ -992,7 +971,7 @@ export default function NewOrderPage() {
 
                     {/* Remaining */}
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Remaining</span>
+                      <span className="text-slate-500 dark:text-slate-400">Remaining</span>
                       <span className={`font-medium ${hasInsufficientBalance ? 'text-red-400' : 'text-emerald-400'}`}>
                         {formatAmount(remainingBalance)}
                       </span>

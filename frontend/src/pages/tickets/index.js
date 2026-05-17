@@ -121,17 +121,17 @@ export default function TicketsPage() {
               <div className="flex items-center gap-5">
                 <div className="relative">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/30">
-                    <Headphones className="h-8 w-8 text-white" />
+                    <Headphones className="h-8 w-8 text-slate-900 dark:text-white" />
                   </div>
                   <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-fuchsia-500 ring-4 ring-slate-900">
-                    <MessageSquare className="h-3 w-3 text-white" />
+                    <MessageSquare className="h-3 w-3 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 via-slate-800 to-slate-500 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Support Tickets
                   </h1>
-                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400 dark:text-slate-400">
                     Get help with your orders and account
                   </p>
                 </div>
@@ -143,11 +143,11 @@ export default function TicketsPage() {
               {/* Quick Stats */}
               <div className="hidden md:flex items-center gap-4">
                 <div className="px-5 py-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 backdrop-blur">
-                  <p className="text-xs text-slate-500 dark:text-slate-400">Open</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">Open</p>
                   <p className="text-2xl font-bold text-violet-400">{openTickets}</p>
                 </div>
                 <div className="px-5 py-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 backdrop-blur">
-                  <p className="text-xs text-slate-500 dark:text-slate-400">Pending</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">Pending</p>
                   <p className="text-2xl font-bold text-amber-400">{pendingTickets}</p>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function TicketsPage() {
             </div>
             <div>
               <h2 className="font-semibold text-slate-800 dark:text-white">Your Tickets</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{pagination.total} total tickets</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">{pagination.total} total tickets</p>
             </div>
           </div>
         </div>
@@ -181,10 +181,10 @@ export default function TicketsPage() {
           {tickets.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-5">
-                <MessageSquare className="h-10 w-10 text-slate-500" />
+                <MessageSquare className="h-10 w-10 text-slate-500 dark:text-slate-400" />
               </div>
               <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">No tickets yet</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 max-w-sm">
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-6 max-w-sm">
                 Need help? Create a support ticket and we&apos;ll get back to you as soon as possible.
               </p>
               <Button 
@@ -223,7 +223,7 @@ export default function TicketsPage() {
                             {ticket.priority}
                           </Badge>
                         </div>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                        <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                           <span className="font-mono text-xs bg-slate-100 dark:bg-slate-700/50 px-2 py-0.5 rounded">#{ticket.id.slice(-8)}</span>
                           <span>·</span>
                           <span>{ticket.category}</span>
@@ -234,7 +234,7 @@ export default function TicketsPage() {
                           </span>
                         </p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-slate-500 group-hover:text-violet-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
+                      <ChevronRight className="w-5 h-5 text-slate-500 dark:text-slate-400 group-hover:text-violet-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
                     </div>
                   </Link>
                 ))}
@@ -265,10 +265,10 @@ export default function TicketsPage() {
           {/* Modal Header */}
           <div className="text-center pb-4 border-b border-slate-200 dark:border-slate-700/50">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 mx-auto mb-4 shadow-lg shadow-violet-500/30">
-              <Send className="h-7 w-7 text-white" />
+              <Send className="h-7 w-7 text-slate-900 dark:text-white" />
             </div>
             <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Create Support Ticket</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">We&apos;ll get back to you as soon as possible</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-1">We&apos;ll get back to you as soon as possible</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -277,7 +277,7 @@ export default function TicketsPage() {
               placeholder="Brief description of your issue"
               {...register('subject')}
               error={errors.subject?.message}
-              className="bg-slate-800/50 border-slate-700"
+              className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
             />
 
             <div className="grid grid-cols-2 gap-4">
@@ -301,7 +301,7 @@ export default function TicketsPage() {
               placeholder="If this is about a specific order"
               {...register('orderId')}
               error={errors.orderId?.message}
-              className="bg-slate-800/50 border-slate-700"
+              className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
             />
 
             <Textarea
@@ -310,7 +310,7 @@ export default function TicketsPage() {
               rows={5}
               {...register('message')}
               error={errors.message?.message}
-              className="bg-slate-800/50 border-slate-700"
+              className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
             />
 
             <div className="flex gap-3 justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
@@ -318,7 +318,7 @@ export default function TicketsPage() {
                 type="button"
                 variant="outline"
                 onClick={() => setShowCreateModal(false)}
-                className="border-slate-600 hover:bg-slate-700"
+                className="border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700"
               >
                 Cancel
               </Button>

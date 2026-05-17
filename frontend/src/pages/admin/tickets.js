@@ -166,7 +166,7 @@ export default function AdminTicketsPage() {
   return (
     <div className="space-y-6">
       {/* Premium Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900 via-slate-800/90 to-slate-900 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/90 dark:to-slate-900 shadow-2xl">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-gradient-to-br from-teal-500/30 to-cyan-500/20 blur-3xl animate-pulse" />
@@ -191,14 +191,14 @@ export default function AdminTicketsPage() {
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 shadow-lg shadow-teal-500/30">
-                    <Headphones className="h-7 w-7 text-white" />
+                    <Headphones className="h-7 w-7 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
+                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Support Tickets
                   </h1>
-                  <p className="text-base text-slate-400 flex items-center gap-2">
+                  <p className="text-base text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                     <Target className="h-4 w-4 text-teal-400" />
                     Manage customer support requests
                   </p>
@@ -212,7 +212,7 @@ export default function AdminTicketsPage() {
                 variant="ghost"
                 onClick={handleRefresh}
                 disabled={isFetching}
-                className="text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm"
+                className="text-slate-600 dark:text-white border border-slate-300/50 dark:border-white/20 bg-white/50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/30 backdrop-blur-sm"
               >
                 <RefreshCw className={`w-4 h-4 mr-2 ${isFetching ? 'animate-spin' : ''}`} />
                 Refresh
@@ -227,7 +227,7 @@ export default function AdminTicketsPage() {
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Status Filters */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-slate-500 uppercase tracking-wider mr-1">Status:</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider mr-1">Status:</span>
             {statusFilters.map((option) => {
               const Icon = option.icon;
               const isActive = status === option.value;
@@ -243,13 +243,9 @@ export default function AdminTicketsPage() {
                 <button
                   key={option.value}
                   onClick={() => { setStatus(option.value); setPage(1); }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-200 text-xs ${
-                    isActive
-                      ? colors.active
-                      : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600 hover:text-slate-300'
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-200 text-xs ${ isActive ? colors.active : 'border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-700 dark:hover:text-slate-300' }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? colors.icon : 'text-slate-500'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? colors.icon : 'text-slate-400 dark:text-slate-500'}`} />
                   <span className="font-medium">{option.label}</span>
                 </button>
               );
@@ -258,7 +254,7 @@ export default function AdminTicketsPage() {
 
           {/* Priority Filters */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs text-slate-500 uppercase tracking-wider mr-1">Priority:</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider mr-1">Priority:</span>
             {priorityFilters.map((option) => {
               const Icon = option.icon;
               const isActive = priority === option.value;
@@ -274,33 +270,29 @@ export default function AdminTicketsPage() {
                 <button
                   key={option.value}
                   onClick={() => { setPriority(option.value); setPage(1); }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-200 text-xs ${
-                    isActive
-                      ? colors.active
-                      : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600 hover:text-slate-300'
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all duration-200 text-xs ${ isActive ? colors.active : 'border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-700 dark:hover:text-slate-300' }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? colors.icon : 'text-slate-500'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? colors.icon : 'text-slate-400 dark:text-slate-500'}`} />
                   <span className="font-medium">{option.label}</span>
                 </button>
               );
             })}
           </div>
         </div>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
           {pagination.total} ticket{pagination.total !== 1 ? 's' : ''} found
         </p>
       </div>
 
       {/* Tickets List */}
-      <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
         {tickets.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-700/50 ring-1 ring-slate-600/50 mb-6">
-              <MessageSquare className="h-10 w-10 text-slate-500" />
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 ring-1 ring-slate-200 dark:ring-slate-600/50 mb-6">
+              <MessageSquare className="h-10 w-10 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No tickets found</h3>
-            <p className="text-slate-400 text-center max-w-sm">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">No tickets found</h3>
+            <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-center max-w-sm">
               All caught up! No support tickets match your filters.
             </p>
             {(status || priority) && (
@@ -315,15 +307,15 @@ export default function AdminTicketsPage() {
           </div>
         ) : (
           <>
-            <div className="divide-y divide-slate-700/50">
+            <div className="divide-y divide-slate-200 dark:divide-slate-700/50">
               {tickets.map((ticket) => (
-                <div key={ticket.id} className="p-5 hover:bg-slate-700/30 transition-colors">
+                <div key={ticket.id} className="p-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
                         <Link
                           href={`/tickets/${ticket.id}`}
-                          className="font-semibold text-white hover:text-teal-400 transition-colors"
+                          className="font-semibold text-slate-900 dark:text-white hover:text-teal-400 transition-colors"
                         >
                           {ticket.subject}
                         </Link>
@@ -339,10 +331,10 @@ export default function AdminTicketsPage() {
                           {ticket.status}
                         </span>
                       </div>
-                      <p className="text-sm text-slate-400 line-clamp-2">
+                      <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 line-clamp-2">
                         {truncate(ticket.messages?.[0]?.message || '', 150)}
                       </p>
-                      <div className="flex flex-wrap items-center gap-3 mt-3 text-xs text-slate-500">
+                      <div className="flex flex-wrap items-center gap-3 mt-3 text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         <span className="flex items-center gap-1.5">
                           <User className="w-3.5 h-3.5" />
                           {ticket.user?.username || ticket.user?.email}
@@ -361,7 +353,7 @@ export default function AdminTicketsPage() {
                       <select
                         value={ticket.status}
                         onChange={(e) => handleUpdateStatus(ticket.id, e.target.value)}
-                        className="px-3 py-2 rounded-lg border border-slate-600 bg-slate-800/80 text-white text-sm focus:outline-none focus:border-teal-500"
+                        className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800/80 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-teal-500"
                       >
                         {statusOptions.filter(o => o.value !== '').map((opt) => (
                           <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -371,17 +363,13 @@ export default function AdminTicketsPage() {
                         onClick={() => setExpandedTicket(
                           expandedTicket === ticket.id ? null : ticket.id
                         )}
-                        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                          expandedTicket === ticket.id
-                            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
-                            : 'bg-slate-700/50 text-slate-300 border border-slate-600 hover:bg-slate-700 hover:text-white'
-                        }`}
+                        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${ expandedTicket === ticket.id ? 'bg-teal-500/20 text-teal-600 dark:text-teal-400 border border-teal-500/50' : 'bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white' }`}
                       >
                         <Reply className="w-4 h-4" />
                         Reply
                       </button>
                       <Link href={`/tickets/${ticket.id}`}>
-                        <button className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-700/50 text-slate-400 border border-slate-600 hover:bg-slate-700 hover:text-white transition-colors">
+                        <button className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white transition-colors">
                           <ExternalLink className="w-4 h-4" />
                         </button>
                       </Link>
@@ -393,14 +381,14 @@ export default function AdminTicketsPage() {
                     <div className="mt-4 ml-4 pl-4 border-l-2 border-teal-500/50">
                       <div className="flex items-center gap-2 mb-3">
                         <Sparkles className="w-4 h-4 text-teal-400" />
-                        <span className="text-sm font-medium text-white">Quick Reply</span>
+                        <span className="text-sm font-medium text-slate-900 dark:text-white">Quick Reply</span>
                       </div>
                       <textarea
                         value={replyText}
                         onChange={(e) => setReplyText(e.target.value)}
                         placeholder="Type your reply..."
                         rows={3}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white placeholder-slate-500 focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 focus:outline-none resize-none"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-teal-500 focus:ring-1 focus:ring-teal-500/30 focus:outline-none resize-none"
                       />
                       <div className="flex justify-end gap-2 mt-3">
                         <button
@@ -408,7 +396,7 @@ export default function AdminTicketsPage() {
                             setExpandedTicket(null);
                             setReplyText('');
                           }}
-                          className="px-4 py-2 rounded-lg text-sm font-medium text-slate-400 border border-slate-600 hover:text-white hover:bg-slate-700/50 transition-colors"
+                          className="px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
                         >
                           Cancel
                         </button>
@@ -432,7 +420,7 @@ export default function AdminTicketsPage() {
             </div>
 
             {pagination.pages > 1 && (
-              <div className="p-4 border-t border-slate-700/50 bg-slate-900/30">
+              <div className="p-4 border-t border-slate-200 dark:border-slate-700/50 bg-slate-900/30">
                 <Pagination
                   currentPage={page}
                   totalPages={pagination.pages}

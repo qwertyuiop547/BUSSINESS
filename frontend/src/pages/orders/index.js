@@ -151,14 +151,14 @@ export default function OrdersPage() {
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/30">
-                    <Package className="h-7 w-7 text-white" />
+                    <Package className="h-7 w-7 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
                   <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-800 via-slate-800 to-slate-500 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Orders
                   </h1>
-                  <p className="text-base text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                  <p className="text-base text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                     <Target className="h-4 w-4 text-violet-400" />
                     Manage and track all your orders
                   </p>
@@ -214,7 +214,7 @@ export default function OrdersPage() {
             
             <div className="relative flex items-center justify-between">
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors mb-1">
+                <p className="text-sm font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors mb-1">
                   {stat.label}
                 </p>
                 <p className={`text-2xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent truncate`}>
@@ -241,7 +241,7 @@ export default function OrdersPage() {
             </div>
             <div>
               <h2 className="font-semibold text-slate-800 dark:text-white">Orders List</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
                 {status ? `${statusLabel} orders` : 'All orders'} · {formatNumber(pagination.total)} total
               </p>
             </div>
@@ -254,7 +254,7 @@ export default function OrdersPage() {
               </span>
               <button
                 onClick={() => setStatus('')}
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-600/50 hover:text-slate-700 dark:hover:text-white transition-all"
+                className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-600/50 hover:text-slate-700 dark:hover:text-white transition-all"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -266,12 +266,12 @@ export default function OrdersPage() {
             <div className="py-16 px-4">
               <div className="flex flex-col items-center justify-center text-center max-w-md mx-auto">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-4">
-                  <Package className="h-10 w-10 text-slate-500" />
+                  <Package className="h-10 w-10 text-slate-500 dark:text-slate-400" />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">
                   No orders found
                 </h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-6">
                   {status
                     ? `You don't have any ${statusLabel?.toLowerCase()} orders.`
                     : "You haven't placed any orders yet. Start boosting your social presence!"}
@@ -293,25 +293,25 @@ export default function OrdersPage() {
                 <table className="w-full">
                   <thead className="bg-slate-50 dark:bg-slate-900/50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Order ID
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Service
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Link
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Quantity
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Amount
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Status
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                         Date
                       </th>
                     </tr>
@@ -332,7 +332,7 @@ export default function OrdersPage() {
                             <p className="text-sm font-medium text-slate-800 dark:text-white truncate">
                               {order.service?.name || 'Service'}
                             </p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-0.5">
                               {order.service?.platform || 'Unknown'}
                             </p>
                           </div>
@@ -358,7 +358,7 @@ export default function OrdersPage() {
                                 : '-'}
                             </p>
                             {order.remains !== null && order.remains > 0 && (
-                              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                              <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-0.5">
                                 {order.remains} left
                               </p>
                             )}
@@ -373,7 +373,7 @@ export default function OrdersPage() {
                           <Badge status={order.status}>{order.status}</Badge>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm text-slate-500 dark:text-slate-400">
+                          <span className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
                             {formatDate(order.createdAt, {
                               month: 'short',
                               day: 'numeric',
@@ -397,13 +397,13 @@ export default function OrdersPage() {
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1 min-w-0">
-                        <p className="font-mono text-xs text-slate-500 dark:text-slate-400 mb-1">
+                        <p className="font-mono text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-1">
                           {formatOrderId(order.id)}
                         </p>
                         <h3 className="text-sm font-semibold text-slate-800 dark:text-white truncate mb-1">
                           {order.service?.name || 'Service'}
                         </h3>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                        <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                           {order.service?.platform || 'Unknown'}
                         </p>
                       </div>
@@ -426,20 +426,20 @@ export default function OrdersPage() {
 
                     <div className="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
                       <div>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-0.5">Quantity</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-0.5">Quantity</p>
                         <p className="text-sm font-medium text-slate-800 dark:text-white">
                           {order.quantity !== null && order.quantity !== undefined
                             ? order.quantity.toLocaleString()
                             : '-'}
                           {order.remains !== null && order.remains > 0 && (
-                            <span className="text-xs text-slate-500 dark:text-slate-400 ml-1">
+                            <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 ml-1">
                               ({order.remains} left)
                             </span>
                           )}
                         </p>
                       </div>
                       <div>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-0.5">Amount</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-0.5">Amount</p>
                         <p className="text-sm font-semibold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                           {formatAmount(order.charge || 0)}
                         </p>
@@ -447,7 +447,7 @@ export default function OrdersPage() {
                     </div>
 
                     <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
-                      <span className="text-xs text-slate-500 dark:text-slate-400">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">
                         {formatDate(order.createdAt, {
                           month: 'short',
                           day: 'numeric',

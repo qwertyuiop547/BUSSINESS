@@ -88,7 +88,7 @@ export default function TicketPage() {
               {ticket.priority}
             </Badge>
           </div>
-          <p className="text-sm text-slate-500 dark:text-gray-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-gray-500">
             #{ticket.id.slice(-8)} · {ticket.category} · Created {formatDate(ticket.createdAt)}
           </p>
         </div>
@@ -101,19 +101,11 @@ export default function TicketPage() {
             {ticket.messages?.map((message) => (
               <div
                 key={message.id}
-                className={`p-4 ${
-                  message.isAdmin
-                    ? 'bg-violet-50 dark:bg-primary-900/10'
-                    : 'bg-white dark:bg-transparent'
-                }`}
+                className={`p-4 ${ message.isAdmin ? 'bg-violet-50 dark:bg-primary-900/10' : 'bg-white dark:bg-transparent' }`}
               >
                 <div className="flex items-start gap-3">
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      message.isAdmin
-                        ? 'bg-violet-100 dark:bg-primary-900/30'
-                        : 'bg-slate-100 dark:bg-gray-800'
-                    }`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center ${ message.isAdmin ? 'bg-violet-100 dark:bg-primary-900/30' : 'bg-slate-100 dark:bg-gray-800' }`}
                   >
                     {message.isAdmin ? (
                       <Shield className="w-4 h-4 text-violet-600 dark:text-primary-600" />
@@ -126,7 +118,7 @@ export default function TicketPage() {
                       <span className="font-medium text-slate-800 dark:text-white">
                         {message.isAdmin ? 'Support Team' : ticket.user?.username || 'You'}
                       </span>
-                      <span className="text-xs text-slate-500 dark:text-gray-500">
+                      <span className="text-xs text-slate-500 dark:text-slate-400 dark:text-gray-500">
                         {formatDate(message.createdAt)}
                       </span>
                     </div>
@@ -168,7 +160,7 @@ export default function TicketPage() {
 
       {ticket.status === 'CLOSED' && (
         <div className="text-center p-4 bg-slate-100 dark:bg-gray-800 rounded-lg">
-          <p className="text-slate-500 dark:text-gray-500">This ticket has been closed.</p>
+          <p className="text-slate-500 dark:text-slate-400 dark:text-gray-500">This ticket has been closed.</p>
         </div>
       )}
     </div>

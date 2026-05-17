@@ -116,17 +116,17 @@ export default function ApiKeysPage() {
               <div className="flex items-center gap-5">
                 <div className="relative">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-600 shadow-lg shadow-fuchsia-500/30">
-                    <Terminal className="h-8 w-8 text-white" />
+                    <Terminal className="h-8 w-8 text-slate-900 dark:text-white" />
                   </div>
                   <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-violet-500 ring-4 ring-white dark:ring-slate-900">
-                    <Code className="h-3 w-3 text-white" />
+                    <Code className="h-3 w-3 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
                   <h1 className="text-4xl font-bold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-500 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     API Keys
                   </h1>
-                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 text-base text-slate-500 dark:text-slate-400 dark:text-slate-400">
                     Manage your API keys for external integrations
                   </p>
                 </div>
@@ -158,7 +158,7 @@ export default function ApiKeysPage() {
               <Code className="w-5 h-5" />
               API Documentation
             </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Integration guide and endpoints</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">Integration guide and endpoints</p>
           </div>
         </div>
         <CardBody>
@@ -216,7 +216,7 @@ export default function ApiKeysPage() {
             </div>
             <div>
               <h2 className="font-semibold text-slate-800 dark:text-white">Your API Keys</h2>
-              <p className="text-sm text-slate-500 dark:text-slate-400">{apiKeys?.length || 0} key{apiKeys?.length !== 1 ? 's' : ''} generated</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">{apiKeys?.length || 0} key{apiKeys?.length !== 1 ? 's' : ''} generated</p>
             </div>
           </div>
         </div>
@@ -224,10 +224,10 @@ export default function ApiKeysPage() {
           {!apiKeys || apiKeys.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
               <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 mb-5">
-                <Key className="h-10 w-10 text-slate-400 dark:text-slate-500" />
+                <Key className="h-10 w-10 text-slate-500 dark:text-slate-400 dark:text-slate-500" />
               </div>
               <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">No API keys</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 max-w-sm">
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 mb-6 max-w-sm">
                 Generate an API key to start using our programmatic interface.
               </p>
               <Button 
@@ -264,7 +264,7 @@ export default function ApiKeysPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
                         <span>Created {formatDate(apiKey.createdAt)}</span>
                         {apiKey.lastUsedAt && (
                           <span>· Last used {formatDate(apiKey.lastUsedAt)}</span>
@@ -309,24 +309,24 @@ export default function ApiKeysPage() {
             <>
               <div className="text-center pb-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 mx-auto mb-4 shadow-lg shadow-emerald-500/30">
-                  <Check className="h-8 w-8 text-white" />
+                  <Check className="h-8 w-8 text-slate-900 dark:text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-white">API Key Generated!</h2>
-                <p className="text-sm text-slate-400 mt-1">Copy your key now - it won&apos;t be shown again</p>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">API Key Generated!</h2>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Copy your key now - it won&apos;t be shown again</p>
               </div>
 
-              <div className="bg-slate-900/50 rounded-xl p-5 border border-slate-700/50">
+              <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-5 border border-slate-200 dark:border-slate-700/50">
                 <div className="flex items-center gap-3 mb-3">
                   <Shield className="w-5 h-5 text-amber-400" />
                   <span className="text-sm font-medium text-amber-400">Important Security Notice</span>
                 </div>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
                   Store this key securely. Anyone with access to it can place orders on your account.
                 </p>
               </div>
 
               <div className="flex items-center gap-3">
-                <code className="flex-1 p-4 bg-slate-800 rounded-lg border border-slate-700 text-sm font-mono break-all text-slate-200">
+                <code className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-mono break-all text-slate-700 dark:text-slate-200">
                   {newKey}
                 </code>
                 <Button
@@ -339,13 +339,13 @@ export default function ApiKeysPage() {
                 </Button>
               </div>
 
-              <div className="flex justify-end pt-4 border-t border-slate-700/50">
+              <div className="flex justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
                 <Button
                   onClick={() => {
                     setShowCreateModal(false);
                     setNewKey(null);
                   }}
-                  className="bg-slate-700 hover:bg-slate-600 border-none"
+                  className="bg-slate-100 dark:bg-slate-700 hover:bg-slate-600 border-none"
                 >
                   Done
                 </Button>
@@ -354,12 +354,12 @@ export default function ApiKeysPage() {
           ) : (
             /* Form State */
             <>
-              <div className="text-center pb-4 border-b border-slate-700/50">
+              <div className="text-center pb-4 border-b border-slate-200 dark:border-slate-700/50">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 mx-auto mb-4 shadow-lg shadow-indigo-500/30">
-                  <Key className="h-7 w-7 text-white" />
+                  <Key className="h-7 w-7 text-slate-900 dark:text-white" />
                 </div>
-                <h2 className="text-2xl font-bold text-white">Generate API Key</h2>
-                <p className="text-sm text-slate-400 mt-1">Create a new key for programmatic access</p>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Generate API Key</h2>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Create a new key for programmatic access</p>
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -368,15 +368,15 @@ export default function ApiKeysPage() {
                   placeholder="e.g., Production API Key"
                   {...register('name')}
                   error={errors.name?.message}
-                  className="bg-slate-800/50 border-slate-700"
+                  className="bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
                 />
                 
-                <div className="flex gap-3 justify-end pt-4 border-t border-slate-700/50">
+                <div className="flex gap-3 justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
                   <Button
                     type="button"
                     variant="outline"
                     onClick={() => setShowCreateModal(false)}
-                    className="border-slate-600 hover:bg-slate-700"
+                    className="border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700"
                   >
                     Cancel
                   </Button>
@@ -408,23 +408,23 @@ export default function ApiKeysPage() {
         <div className="space-y-6">
           <div className="text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 mx-auto mb-4 shadow-lg shadow-rose-500/30">
-              <Trash2 className="h-8 w-8 text-white" />
+              <Trash2 className="h-8 w-8 text-slate-900 dark:text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-white">Delete API Key?</h2>
-            <p className="text-sm text-slate-400 mt-2">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Delete API Key?</h2>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
               Are you sure you want to delete this API key?
             </p>
           </div>
 
           {keyToDelete && (
-            <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+            <div className="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700/50">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 ring-1 ring-slate-700">
-                  <Key className="w-5 h-5 text-slate-400" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white dark:bg-slate-800 ring-1 ring-slate-700">
+                  <Key className="w-5 h-5 text-slate-500 dark:text-slate-400" />
                 </div>
                 <div>
-                  <p className="font-medium text-white">{keyToDelete.name}</p>
-                  <p className="text-xs text-slate-500 font-mono">
+                  <p className="font-medium text-slate-900 dark:text-white">{keyToDelete.name}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                     {keyToDelete.key}
                   </p>
                 </div>
@@ -444,7 +444,7 @@ export default function ApiKeysPage() {
             </div>
           </div>
 
-          <div className="flex gap-3 justify-end pt-4 border-t border-slate-700/50">
+          <div className="flex gap-3 justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
             <Button
               type="button"
               variant="outline"
@@ -452,7 +452,7 @@ export default function ApiKeysPage() {
                 setShowDeleteModal(false);
                 setKeyToDelete(null);
               }}
-              className="border-slate-600 hover:bg-slate-700"
+              className="border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700"
             >
               Cancel
             </Button>

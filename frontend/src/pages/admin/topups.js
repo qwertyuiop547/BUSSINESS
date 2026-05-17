@@ -109,7 +109,7 @@ export default function AdminTopUpsPage() {
   return (
     <div className="space-y-6">
       {/* Premium Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900 via-slate-800/90 to-slate-900 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/90 dark:to-slate-900 shadow-2xl">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 blur-3xl animate-pulse" />
@@ -134,14 +134,14 @@ export default function AdminTopUpsPage() {
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-600 shadow-lg shadow-emerald-500/30">
-                    <Wallet className="h-7 w-7 text-white" />
+                    <Wallet className="h-7 w-7 text-slate-900 dark:text-white" />
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
+                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Top-up Requests
                   </h1>
-                  <p className="text-base text-slate-400 flex items-center gap-2">
+                  <p className="text-base text-slate-500 dark:text-slate-400 dark:text-slate-400 flex items-center gap-2">
                     <Target className="h-4 w-4 text-emerald-400" />
                     Review and process user fund requests
                   </p>
@@ -154,7 +154,7 @@ export default function AdminTopUpsPage() {
               <Button
                 variant="ghost"
                 onClick={handleRefresh}
-                className="text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm"
+                className="text-slate-900 dark:text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Refresh
@@ -187,11 +187,7 @@ export default function AdminTopUpsPage() {
               <button
                 key={option.value}
                 onClick={() => { setStatus(option.value); setPage(1); }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all duration-200 ${
-                  isActive
-                    ? colors.active
-                    : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600 hover:text-slate-300'
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all duration-200 ${ isActive ? colors.active : 'border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-300' }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? colors.icon : 'text-slate-500'}`} />
                 <span className="text-sm font-medium">{option.label}</span>
@@ -199,20 +195,20 @@ export default function AdminTopUpsPage() {
             );
           })}
         </div>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400">
           {pagination.total} request{pagination.total !== 1 ? 's' : ''} found
         </p>
       </div>
 
       {/* Top-ups Table */}
-      <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
         {topUps.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-700/50 ring-1 ring-slate-600/50 mb-6">
-              <Wallet className="h-10 w-10 text-slate-500" />
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 ring-1 ring-slate-200 dark:ring-slate-600/50 mb-6">
+              <Wallet className="h-10 w-10 text-slate-500 dark:text-slate-400 dark:text-slate-400" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No top-up requests</h3>
-            <p className="text-slate-400 text-center max-w-sm">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">No top-up requests</h3>
+            <p className="text-slate-500 dark:text-slate-400 dark:text-slate-400 text-center max-w-sm">
               {status === 'PENDING' 
                 ? 'No pending requests to review at the moment.' 
                 : status === 'APPROVED'
@@ -235,49 +231,49 @@ export default function AdminTopUpsPage() {
           <>
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-slate-900/50">
+                <thead className="bg-slate-50 dark:bg-slate-900/50">
                   <tr>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                       <div className="flex items-center gap-2">
                         <User className="w-4 h-4" />
                         User
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                       <div className="flex items-center gap-2">
                         <Wallet className="w-4 h-4" />
                         Amount
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                       <div className="flex items-center gap-2">
                         <CreditCard className="w-4 h-4" />
                         Method
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                       <div className="flex items-center gap-2">
                         <Hash className="w-4 h-4" />
                         Reference
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">Status</th>
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4" />
                         Date
                       </div>
                     </th>
-                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">Actions</th>
+                    <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 dark:text-slate-400 dark:text-slate-400 uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700/50">
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-700/50">
                   {topUps.map((topUp) => (
-                    <tr key={topUp.id} className="hover:bg-slate-700/30 transition-colors">
+                    <tr key={topUp.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
                       <td className="px-6 py-4">
                         <div>
-                          <p className="font-medium text-white">{topUp.user?.username}</p>
-                          <p className="text-xs text-slate-400">{topUp.user?.email}</p>
+                          <p className="font-medium text-slate-900 dark:text-white">{topUp.user?.username}</p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">{topUp.user?.email}</p>
                         </div>
                       </td>
                       <td className="px-6 py-4">
@@ -286,20 +282,20 @@ export default function AdminTopUpsPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-700/50 text-slate-300 text-sm">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 text-sm">
                           <CreditCard className="w-3.5 h-3.5" />
                           {topUp.paymentMethod}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="font-mono text-sm text-slate-300 bg-slate-700/30 px-2 py-1 rounded">
+                        <span className="font-mono text-sm text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-700/30 px-2 py-1 rounded">
                           {topUp.referenceNumber || '-'}
                         </span>
                       </td>
                       <td className="px-6 py-4">
                         <Badge status={topUp.status}>{topUp.status}</Badge>
                       </td>
-                      <td className="px-6 py-4 text-slate-400 text-sm">
+                      <td className="px-6 py-4 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-sm">
                         {formatDate(topUp.createdAt)}
                       </td>
                       <td className="px-6 py-4">
@@ -327,7 +323,7 @@ export default function AdminTopUpsPage() {
                               setAction('view');
                               setShowModal(true);
                             }}
-                            className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-700/50 text-slate-400 hover:bg-slate-600/50 hover:text-slate-300 transition-colors ring-1 ring-slate-600/50"
+                            className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600/50 hover:text-slate-600 dark:hover:text-slate-300 transition-colors ring-1 ring-slate-200 dark:ring-slate-600/50"
                             title="View Details"
                           >
                             <Eye className="w-4 h-4" />
@@ -341,7 +337,7 @@ export default function AdminTopUpsPage() {
             </div>
 
             {pagination.pages > 1 && (
-              <div className="p-4 border-t border-slate-700/50 bg-slate-900/30">
+              <div className="p-4 border-t border-slate-200 dark:border-slate-700/50 bg-slate-900/30">
                 <Pagination
                   currentPage={page}
                   totalPages={pagination.pages}
@@ -368,30 +364,24 @@ export default function AdminTopUpsPage() {
         {selectedTopUp && (
           <div className="space-y-6">
             {/* Modal Header */}
-            <div className="text-center pb-4 border-b border-slate-700/50">
-              <div className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl mb-4 ${
-                action === 'approve' 
-                  ? 'bg-gradient-to-br from-emerald-500 to-cyan-600 shadow-lg shadow-emerald-500/30'
-                  : action === 'reject'
-                    ? 'bg-gradient-to-br from-red-500 to-rose-600 shadow-lg shadow-red-500/30'
-                    : 'bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/30'
-              }`}>
+            <div className="text-center pb-4 border-b border-slate-200 dark:border-slate-700/50">
+              <div className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl mb-4 ${ action === 'approve' ? 'bg-gradient-to-br from-emerald-500 to-cyan-600 shadow-lg shadow-emerald-500/30' : action === 'reject' ? 'bg-gradient-to-br from-red-500 to-rose-600 shadow-lg shadow-red-500/30' : 'bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg shadow-violet-500/30' }`}>
                 {action === 'approve' ? (
-                  <CheckCircle className="h-8 w-8 text-white" />
+                  <CheckCircle className="h-8 w-8 text-slate-900 dark:text-white" />
                 ) : action === 'reject' ? (
-                  <XCircle className="h-8 w-8 text-white" />
+                  <XCircle className="h-8 w-8 text-slate-900 dark:text-white" />
                 ) : (
-                  <Eye className="h-8 w-8 text-white" />
+                  <Eye className="h-8 w-8 text-slate-900 dark:text-white" />
                 )}
               </div>
-              <h3 className="text-xl font-bold text-white">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 {action === 'approve'
                   ? 'Approve Top-up Request'
                   : action === 'reject'
                     ? 'Reject Top-up Request'
                     : 'Top-up Details'}
               </h3>
-              <p className="text-sm text-slate-400 mt-1">
+              <p className="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-400 mt-1">
                 {action === 'approve'
                   ? 'Confirm to add funds to user account'
                   : action === 'reject'
@@ -402,16 +392,16 @@ export default function AdminTopUpsPage() {
 
             {/* Request Details */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-1">
                   <User className="w-3.5 h-3.5" />
                   User
                 </div>
-                <p className="font-medium text-white">{selectedTopUp.user?.username}</p>
-                <p className="text-xs text-slate-400">{selectedTopUp.user?.email}</p>
+                <p className="font-medium text-slate-900 dark:text-white">{selectedTopUp.user?.username}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-400">{selectedTopUp.user?.email}</p>
               </div>
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-1">
                   <Wallet className="w-3.5 h-3.5" />
                   Amount
                 </div>
@@ -419,33 +409,33 @@ export default function AdminTopUpsPage() {
                   {formatCurrency(selectedTopUp.amount)}
                 </p>
               </div>
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-1">
                   <CreditCard className="w-3.5 h-3.5" />
                   Payment Method
                 </div>
-                <p className="font-medium text-white">{selectedTopUp.paymentMethod}</p>
+                <p className="font-medium text-slate-900 dark:text-white">{selectedTopUp.paymentMethod}</p>
               </div>
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-1">
                   <Hash className="w-3.5 h-3.5" />
                   Reference
                 </div>
-                <p className="font-mono text-white">{selectedTopUp.referenceNumber || '-'}</p>
+                <p className="font-mono text-slate-900 dark:text-white">{selectedTopUp.referenceNumber || '-'}</p>
               </div>
-              <div className="col-span-2 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
+              <div className="col-span-2 p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-1">
                   <Calendar className="w-3.5 h-3.5" />
                   Submitted
                 </div>
-                <p className="text-white">{formatDate(selectedTopUp.createdAt)}</p>
+                <p className="text-slate-900 dark:text-white">{formatDate(selectedTopUp.createdAt)}</p>
               </div>
             </div>
 
             {/* Proof Image */}
             {selectedTopUp.proofUrl && (
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-2">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-2">
                   <Receipt className="w-3.5 h-3.5" />
                   Payment Proof
                 </div>
@@ -463,7 +453,7 @@ export default function AdminTopUpsPage() {
             {/* Admin Note Input */}
             {action !== 'view' && (
               <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                   <Sparkles className="w-4 h-4 text-violet-400" />
                   Admin Note (Optional)
                 </label>
@@ -472,28 +462,28 @@ export default function AdminTopUpsPage() {
                   value={adminNote}
                   onChange={(e) => setAdminNote(e.target.value)}
                   rows={3}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white placeholder-slate-500 focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 focus:outline-none resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 focus:outline-none resize-none"
                 />
               </div>
             )}
 
             {/* Existing Admin Note */}
             {selectedTopUp.adminNote && action === 'view' && (
-              <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-400 text-xs mb-1">
                   <Sparkles className="w-3.5 h-3.5" />
                   Admin Note
                 </div>
-                <p className="text-white">{selectedTopUp.adminNote}</p>
+                <p className="text-slate-900 dark:text-white">{selectedTopUp.adminNote}</p>
               </div>
             )}
 
             {/* Action Buttons */}
-            <div className="flex gap-3 justify-end pt-4 border-t border-slate-700/50">
+            <div className="flex gap-3 justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
               <Button
                 variant="ghost"
                 onClick={() => setShowModal(false)}
-                className="text-slate-400 border border-slate-600 hover:text-white hover:bg-slate-700/50"
+                className="text-slate-500 dark:text-slate-400 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50"
               >
                 {action === 'view' ? 'Close' : 'Cancel'}
               </Button>

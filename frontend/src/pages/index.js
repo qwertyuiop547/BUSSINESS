@@ -294,7 +294,7 @@ function StatCard({ stat, index }) {
           
           {/* Icon container */}
           <div className={`relative w-10 h-10 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-            <stat.icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+            <stat.icon className="w-5 h-5 sm:w-7 sm:h-7 text-slate-900 dark:text-white" />
           </div>
         </div>
       </div>
@@ -436,7 +436,7 @@ export default function HomePage() {
                   {/* Background chart icon */}
                   <TrendingUp className="absolute w-6 h-6 sm:w-8 sm:h-8 text-white/20 -translate-x-0.5 -translate-y-0.5" />
                   {/* Main S letter */}
-                  <span className="relative font-black text-xl sm:text-3xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] tracking-tighter">S</span>
+                  <span className="relative font-black text-xl sm:text-3xl text-slate-900 dark:text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] tracking-tighter">S</span>
                 </div>
                 
                 {/* Sparkle decorations */}
@@ -455,7 +455,7 @@ export default function HomePage() {
               
               {/* Floating mini icons */}
               <div className="absolute -bottom-1 -left-1 w-5 h-5 rounded-md bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center shadow-lg border border-white/50 dark:border-gray-800 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0 translate-x-2">
-                <Star className="w-2.5 h-2.5 text-white" />
+                <Star className="w-2.5 h-2.5 text-slate-900 dark:text-white" />
               </div>
             </div>
             
@@ -613,7 +613,7 @@ export default function HomePage() {
                       <div className="relative">
                         <div className={`absolute inset-0 w-12 h-12 rounded-xl ${platform.bgClass} blur-lg opacity-0 group-hover:opacity-50 transition-opacity`} />
                         <div className={`relative w-12 h-12 rounded-xl ${platform.bgClass} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
-                          <platform.icon className="w-6 h-6 text-white" />
+                          <platform.icon className="w-6 h-6 text-slate-900 dark:text-white" />
                         </div>
                       </div>
                       <div>
@@ -677,7 +677,7 @@ export default function HomePage() {
                   <div className="relative mb-3 sm:mb-4">
                     <div className={`absolute inset-0 w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${platform.bgClass} blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500`} />
                     <div className={`relative w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ${platform.bgClass} flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 ${platform.glowClass}`}>
-                      <platform.icon className="text-white w-5 h-5 sm:w-7 sm:h-7" />
+                      <platform.icon className="text-slate-900 dark:text-white w-5 h-5 sm:w-7 sm:h-7" />
                     </div>
                   </div>
                   
@@ -758,7 +758,7 @@ export default function HomePage() {
                       <div className={`absolute inset-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${gradient} blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-500`} />
                       {/* Icon container */}
                       <div className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                        <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-lg" />
+                        <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-slate-900 dark:text-white drop-shadow-lg" />
                       </div>
                     </div>
                     
@@ -874,7 +874,7 @@ export default function HomePage() {
                         <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.gradient} blur-2xl opacity-0 group-hover:opacity-70 transition-opacity duration-500`} />
                         {/* Main circle */}
                         <div className={`relative w-full h-full rounded-full bg-gradient-to-br ${step.gradient} flex flex-col items-center justify-center shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                          <step.icon className="w-10 h-10 sm:w-14 sm:h-14 text-white drop-shadow-lg" />
+                          <step.icon className="w-10 h-10 sm:w-14 sm:h-14 text-slate-900 dark:text-white drop-shadow-lg" />
                           <span className="text-sm sm:text-base font-bold text-white/90 mt-1">{step.step}</span>
                         </div>
                         {/* Floating badge */}
@@ -908,7 +908,7 @@ export default function HomePage() {
                       <div className="flex flex-col items-center gap-1">
                         <div className={`w-1 h-8 bg-gradient-to-b ${step.gradient} rounded-full opacity-40`} />
                         <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-xl`}>
-                          <ArrowRight className="w-5 h-5 text-white rotate-90" />
+                          <ArrowRight className="w-5 h-5 text-slate-900 dark:text-white rotate-90" />
                         </div>
                       </div>
                     </div>
@@ -925,22 +925,37 @@ export default function HomePage() {
             <p className="mb-2 text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400">Testimonials</p>
             <h2 className="text-2xl sm:text-3xl font-bold lg:text-4xl">What Our Customers Say</h2>
           </div>
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-3">
             {testimonials.map((testimonial, idx) => (
-              <div key={idx} className="p-4 sm:p-6 bg-white border border-gray-200 shadow-sm rounded-2xl dark:bg-gray-800 dark:border-gray-700">
-                <div className="flex items-center gap-1 mb-3 sm:mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="mb-4 sm:mb-6 text-sm sm:text-base text-gray-600 dark:text-gray-300">"{testimonial.content}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 text-sm sm:text-base font-bold text-white rounded-full bg-gradient-to-br from-indigo-500 to-purple-600">
-                    {testimonial.name.charAt(0)}
+              <div key={idx} className="group relative p-6 sm:p-8 bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-slate-200/60 dark:border-slate-700/50 shadow-lg rounded-3xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 overflow-hidden flex flex-col">
+                {/* Accent Background Gradient */}
+                <div className="absolute top-0 right-0 p-16 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Quotation Mark Watermark */}
+                <div className="absolute -top-2 right-4 text-[120px] font-serif leading-none text-slate-200/50 dark:text-slate-700/30 group-hover:text-indigo-500/10 transition-colors duration-500 select-none">"</div>
+
+                <div className="relative z-10 flex-1 flex flex-col">
+                  <div className="flex items-center gap-1 mb-5">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 fill-amber-400 drop-shadow-sm group-hover:scale-110 transition-transform" style={{ transitionDelay: `${i * 50}ms` }} />
+                    ))}
                   </div>
-                  <div>
-                    <div className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>
-                    <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</div>
+                  
+                  <p className="mb-6 sm:mb-8 text-sm sm:text-base text-slate-600 dark:text-slate-300 italic leading-relaxed flex-1">
+                    "{testimonial.content}"
+                  </p>
+                  
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/80 dark:border-slate-700/50">
+                    <div className="relative">
+                      <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 blur-sm opacity-30 group-hover:opacity-70 transition-opacity" />
+                      <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-sm sm:text-base font-bold text-white rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-md">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{testimonial.name}</div>
+                      <div className="text-xs sm:text-sm font-medium text-indigo-600 dark:text-indigo-400">{testimonial.role}</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -950,7 +965,7 @@ export default function HomePage() {
   
         {/* CTA Section */}
         <section className="py-12 sm:py-16 lg:py-20">
-          <div className="relative p-6 sm:p-8 lg:p-16 overflow-hidden text-center text-white border rounded-2xl sm:rounded-3xl border-slate-700 bg-gradient-to-br from-slate-900 via-slate-800 to-sky-950 shadow-xl">
+          <div className="relative p-6 sm:p-8 lg:p-16 overflow-hidden text-center text-slate-900 dark:text-white border rounded-2xl sm:rounded-3xl border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-900 via-slate-800 to-sky-950 shadow-xl">
             {/* Glow Effects */}
             <div className="absolute -left-10 top-6 h-40 w-40 rounded-full bg-cyan-500/20 blur-3xl pointer-events-none" />
             <div className="absolute -right-16 bottom-6 h-52 w-52 rounded-full bg-amber-400/20 blur-3xl pointer-events-none" />
@@ -969,7 +984,7 @@ export default function HomePage() {
                   </Button>
                 </Link>
                 <Link href="/login">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto px-6 sm:px-8 text-white bg-white/5 border border-white/20 hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto px-6 sm:px-8 text-slate-900 dark:text-white bg-white/5 border border-white/20 hover:bg-white/10">
                     Sign In
                   </Button>
                 </Link>
@@ -996,7 +1011,7 @@ export default function HomePage() {
                     </div>
                     <div className="relative flex items-center justify-center">
                       <TrendingUp className="absolute w-6 h-6 text-white/20 -translate-x-0.5 -translate-y-0.5" />
-                      <span className="relative font-black text-xl text-white drop-shadow-lg">S</span>
+                      <span className="relative font-black text-xl text-slate-900 dark:text-white drop-shadow-lg">S</span>
                     </div>
                     <div className="absolute top-1 right-1 w-1 h-1 bg-white rounded-full" />
                   </div>
@@ -1017,7 +1032,7 @@ export default function HomePage() {
               <div className="flex items-center gap-3 sm:gap-4 mt-3 sm:mt-4">
                 {platforms.slice(0, 4).map((platform) => (
                   <div key={platform.name} className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg ${platform.bgClass} flex items-center justify-center`}>
-                    <platform.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                    <platform.icon className="w-3 h-3 sm:w-4 sm:h-4 text-slate-900 dark:text-white" />
                   </div>
                 ))}
               </div>

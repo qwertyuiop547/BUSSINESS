@@ -131,7 +131,7 @@ export default function SuggestionsPage() {
   return (
     <div className="space-y-6">
       {/* Premium Hero Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-700/50 bg-gradient-to-br from-slate-900 via-slate-800/90 to-slate-900 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700/50 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/90 dark:to-slate-900 shadow-2xl">
         {/* Animated Background Effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-gradient-to-br from-amber-500/30 to-orange-500/20 blur-3xl animate-pulse" />
@@ -152,13 +152,13 @@ export default function SuggestionsPage() {
               
               <div className="flex items-center gap-4">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/30">
-                  <Lightbulb className="h-7 w-7 text-white" />
+                  <Lightbulb className="h-7 w-7 text-slate-900 dark:text-white" />
                 </div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-white to-slate-400 bg-clip-text text-transparent">
+                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-white dark:to-slate-400 bg-clip-text text-transparent">
                     Suggestions
                   </h1>
-                  <p className="text-base text-slate-400 flex items-center gap-2">
+                  <p className="text-base text-slate-500 dark:text-slate-400 flex items-center gap-2">
                     <Target className="h-4 w-4 text-amber-400" />
                     Share your ideas to make us better
                   </p>
@@ -171,7 +171,7 @@ export default function SuggestionsPage() {
                 variant="ghost"
                 onClick={handleRefresh}
                 disabled={isFetching}
-                className="text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm"
+                className="text-slate-600 dark:text-white border border-slate-300/50 dark:border-white/20 bg-white/50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 hover:border-slate-300 dark:hover:border-white/30 backdrop-blur-sm"
               >
                 <RefreshCw className={`w-4 h-4 mr-2 ${isFetching ? 'animate-spin' : ''}`} />
                 Refresh
@@ -208,32 +208,28 @@ export default function SuggestionsPage() {
               <button
                 key={option.value}
                 onClick={() => { setStatus(option.value); setPage(1); }}
-                className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-200 text-sm ${
-                  isActive
-                    ? colors.active
-                    : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600 hover:text-slate-300'
-                }`}
+                className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-200 text-sm ${ isActive ? colors.active : 'border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:text-slate-700 dark:hover:text-slate-300' }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? colors.icon : 'text-slate-500'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? colors.icon : 'text-slate-400 dark:text-slate-500'}`} />
                 <span className="font-medium">{option.label}</span>
               </button>
             );
           })}
         </div>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
           {pagination.total} suggestion{pagination.total !== 1 ? 's' : ''} submitted
         </p>
       </div>
 
       {/* Suggestions List */}
-      <div className="rounded-2xl border border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
+      <div className="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800/50 backdrop-blur-sm overflow-hidden">
         {suggestions.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-4">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-700/50 ring-1 ring-slate-600/50 mb-6">
-              <Lightbulb className="h-10 w-10 text-slate-500" />
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-700/50 ring-1 ring-slate-200 dark:ring-slate-600/50 mb-6">
+              <Lightbulb className="h-10 w-10 text-slate-500 dark:text-slate-400" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No suggestions yet</h3>
-            <p className="text-slate-400 text-center max-w-sm mb-4">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">No suggestions yet</h3>
+            <p className="text-slate-500 dark:text-slate-400 text-center max-w-sm mb-4">
               Be the first to share your ideas! Help us improve by submitting a suggestion.
             </p>
             <button
@@ -246,15 +242,15 @@ export default function SuggestionsPage() {
           </div>
         ) : (
           <>
-            <div className="divide-y divide-slate-700/50">
+            <div className="divide-y divide-slate-200 dark:divide-slate-700/50">
               {suggestions.map((suggestion) => {
                 const CategoryIcon = getCategoryIcon(suggestion.category);
                 return (
-                  <div key={suggestion.id} className="p-5 hover:bg-slate-700/30 transition-colors">
+                  <div key={suggestion.id} className="p-5 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <h3 className="font-semibold text-white">{suggestion.title}</h3>
+                          <h3 className="font-semibold text-slate-900 dark:text-white">{suggestion.title}</h3>
                           <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border ${getCategoryStyle(suggestion.category)}`}>
                             <CategoryIcon className="w-3 h-3" />
                             {suggestion.category.replace('_', ' ')}
@@ -263,16 +259,16 @@ export default function SuggestionsPage() {
                             {suggestion.status.replace('_', ' ')}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-400 line-clamp-2 mb-3">
+                        <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">
                           {suggestion.description}
                         </p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-slate-500 dark:text-slate-400">
                           Submitted {formatDate(suggestion.createdAt)}
                         </p>
                         {suggestion.adminNote && (
-                          <div className="mt-3 p-3 rounded-lg bg-slate-900/50 border border-slate-700/50">
-                            <p className="text-xs text-slate-500 mb-1">Admin Response:</p>
-                            <p className="text-sm text-slate-300">{suggestion.adminNote}</p>
+                          <div className="mt-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700/50">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Admin Response:</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-300">{suggestion.adminNote}</p>
                           </div>
                         )}
                       </div>
@@ -283,7 +279,7 @@ export default function SuggestionsPage() {
             </div>
 
             {pagination.pages > 1 && (
-              <div className="p-4 border-t border-slate-700/50 bg-slate-900/30">
+              <div className="p-4 border-t border-slate-200 dark:border-slate-700/50 bg-slate-900/30">
                 <Pagination
                   currentPage={page}
                   totalPages={pagination.pages}
@@ -303,17 +299,17 @@ export default function SuggestionsPage() {
         size="lg"
       >
         <div className="space-y-6">
-          <div className="text-center pb-4 border-b border-slate-700/50">
+          <div className="text-center pb-4 border-b border-slate-200 dark:border-slate-700/50">
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/30 mb-4">
-              <Lightbulb className="h-8 w-8 text-white" />
+              <Lightbulb className="h-8 w-8 text-slate-900 dark:text-white" />
             </div>
-            <h3 className="text-xl font-bold text-white">New Suggestion</h3>
-            <p className="text-sm text-slate-400 mt-1">Share your ideas to help us improve</p>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">New Suggestion</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Share your ideas to help us improve</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-slate-300 mb-2 block">Category</label>
+              <label className="text-sm font-medium text-slate-600 dark:text-slate-300 mb-2 block">Category</label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {categoryOptions.map((option) => {
                   const Icon = option.icon;
@@ -332,11 +328,7 @@ export default function SuggestionsPage() {
                       key={option.value}
                       type="button"
                       onClick={() => setFormData({ ...formData, category: option.value })}
-                      className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border transition-all duration-200 text-sm ${
-                        isSelected
-                          ? colorMap[option.color]
-                          : 'border-slate-700/50 bg-slate-800/50 text-slate-400 hover:border-slate-600'
-                      }`}
+                      className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border transition-all duration-200 text-sm ${ isSelected ? colorMap[option.color] : 'border-slate-700/50 bg-white dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 hover:border-slate-600' }`}
                     >
                       <Icon className="w-4 h-4" />
                       <span className="font-medium">{option.label}</span>
@@ -347,34 +339,34 @@ export default function SuggestionsPage() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-300 mb-2 block">Title</label>
+              <label className="text-sm font-medium text-slate-600 dark:text-slate-300 mb-2 block">Title</label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="Brief title for your suggestion..."
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 focus:outline-none"
+                className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 focus:outline-none"
                 required
               />
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-300 mb-2 block">Description</label>
+              <label className="text-sm font-medium text-slate-600 dark:text-slate-300 mb-2 block">Description</label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="Describe your suggestion in detail..."
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-600 text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 focus:outline-none resize-none"
+                className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white placeholder-slate-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 focus:outline-none resize-none"
                 required
               />
             </div>
 
-            <div className="flex gap-3 justify-end pt-4 border-t border-slate-700/50">
+            <div className="flex gap-3 justify-end pt-4 border-t border-slate-200 dark:border-slate-700/50">
               <button
                 type="button"
                 onClick={() => setShowCreateModal(false)}
-                className="px-4 py-2.5 rounded-xl text-slate-400 border border-slate-600 hover:text-white hover:bg-slate-700/50 transition-colors"
+                className="px-4 py-2.5 rounded-xl text-slate-500 dark:text-slate-400 border border-slate-300 dark:border-slate-600 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
               >
                 Cancel
               </button>
