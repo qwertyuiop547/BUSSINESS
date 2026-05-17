@@ -633,3 +633,17 @@ export function useDeleteSuggestion() {
     },
   });
 }
+
+// ==================== PUBLIC STATS (no auth required) ====================
+
+export function usePublicStats() {
+  return useQuery({
+    queryKey: ['public', 'stats'],
+    queryFn: async () => {
+      const response = await api.get('/v1/public/stats');
+      return response.data?.data;
+    },
+    staleTime: 60 * 1000, // 1 minute
+    refetchOnWindowFocus: false,
+  });
+}

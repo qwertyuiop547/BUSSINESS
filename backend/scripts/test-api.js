@@ -1,39 +1,44 @@
-const http = require('http');
+const https = require('https');
 
-// Try the authenticated services endpoint
-const options = {
-    hostname: 'localhost',
-    port: 5000,
-    path: '/api/v1/services?limit=1000',
-    method: 'GET'
-};
+const url = 'https://peakerr.com/api/v2?key=41703b61dc18b1e5dff1283375e14fd6&action=services';
 
-const req = http.request(options, (res) => {
-    let data = '';
-    res.on('data', chunk => data += chunk);
-    res.on('end', () => {
-        console.log('Response status:', res.statusCode);
-        try {
-            const json = JSON.parse(data);
-            console.log('Total services from API:', json.data?.length || 0);
+console.log('Testing Peakerr API...');
+console.log('URL:', url);
 
-            // Get all unique categories
-            const categories = {};
-            json.data?.forEach(s => {
-                const catName = s.category?.name || 'Unknown';
-                if (!categories[catName]) categories[catName] = 0;
-                categories[catName]++;
-            });
-
-            console.log('\nServices by category:');
-            for (const [cat, count] of Object.entries(categories).sort((a, b) => b[1] - a[1])) {
-                console.log(`  ${cat}: ${count}`);
-            }
-        } catch (e) {
-            console.log('Response:', data.substring(0, 500));
-        }
-    });
+const req = https.get(url, { timeout: 30000 }, (res) => {
+  console.log('Status:', res.statusCode);
+  console.log('Headers:', res.headers['content-type']);
+  
+  let data = '';
+  res.on('data', chunk => {
+    data += chunk;
+    if (data.length > 1000 && !data.includes('[')) {
+      console.log('First 500 chars:', data.slice(0, 500));
+    }
+  });
+  
+  res.on('end', () => {
+    console.log('Response length:', data.length);
+    try {
+      const json = JSON.parse(data);
+      if (Array.isArray(json)) {
+        console.log('Services count:', json.length);
+        if (json[0]) console.log('First service:', json[0]);
+      } else {
+        console.log('Response:', json);
+      }
+    } catch (e) {
+      console.log('Parse error:', e.message);
+      console.log('Raw data (first 500):', data.slice(0, 500));
+    }
+  });
 });
 
-req.on('error', (e) => console.error('Error:', e.message));
-req.end();
+req.on('error', (e) => {
+  console.error('Request error:', e.message);
+});
+
+req.on('timeout', () => {
+  console.error('Request timeout');
+  req.destroy();
+});

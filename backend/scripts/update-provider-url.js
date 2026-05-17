@@ -1,5 +1,7 @@
 /**
  * Update Provider API URL
+ * Usage: node scripts/update-provider-url.js <name> <apiUrl> <apiKey>
+ * Example: node scripts/update-provider-url.js "My Provider" "https://api.example.com" "your-api-key"
  */
 
 require('dotenv').config();
@@ -8,9 +10,15 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  const providerName = 'Main Provider';
-  const apiUrl = 'https://cheappanel.com/api/v2';
-  const apiKey = 'e719bb49bbd6059b6d55740db57047e9';
+  const args = process.argv.slice(2);
+  
+  if (args.length < 3) {
+    console.log('Usage: node scripts/update-provider-url.js <name> <apiUrl> <apiKey>');
+    console.log('Example: node scripts/update-provider-url.js "My Provider" "https://api.example.com" "your-api-key"');
+    process.exit(1);
+  }
+  
+  const [providerName, apiUrl, apiKey] = args;
 
   try {
     console.log('📝 Updating provider...\n');
@@ -29,7 +37,7 @@ async function main() {
           name: providerName,
           apiUrl,
           apiKey,
-          description: 'Main API provider - CheapPanel',
+          description: `${providerName} API Provider`,
           status: 'ACTIVE',
         },
       });
@@ -45,7 +53,7 @@ async function main() {
         data: {
           apiUrl,
           apiKey,
-          description: 'Main API provider - CheapPanel',
+          description: `${providerName} API Provider`,
           status: 'ACTIVE',
         },
       });
