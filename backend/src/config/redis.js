@@ -17,26 +17,38 @@ let isRedisConnected = false;
  */
 const initRedis = () => {
   // Skip Redis if explicitly disabled or not configured
-  if (process.env.REDIS_DISABLED === 'true' || !config.redis.host) {
+  if (process.env.REDIS_DISABLED === 'true' || (!config.redis.url && !config.redis.host)) {
     return null;
   }
 
   try {
-    redis = new Redis({
-      host: config.redis.host,
-      port: config.redis.port,
-      password: config.redis.password || undefined,
-      maxRetriesPerRequest: null, // Required for BullMQ
-      enableReadyCheck: false,
-      lazyConnect: true, // Don't connect immediately
-      retryStrategy: (times) => {
-        if (times > 1) {
-          // Silent fail - don't show warning
-          return null; // Stop retrying
+    // Use REDIS_URL if available (Render, Railway, etc.), otherwise use host/port
+    const redisOptions = config.redis.url
+      ? {
+          maxRetriesPerRequest: null, // Required for BullMQ
+          enableReadyCheck: false,
+          lazyConnect: true,
+          retryStrategy: (times) => {
+            if (times > 1) return null;
+            return Math.min(times * 200, 1000);
+          },
         }
-        return Math.min(times * 200, 1000);
-      },
-    });
+      : {
+          host: config.redis.host,
+          port: config.redis.port,
+          password: config.redis.password || undefined,
+          maxRetriesPerRequest: null, // Required for BullMQ
+          enableReadyCheck: false,
+          lazyConnect: true,
+          retryStrategy: (times) => {
+            if (times > 1) return null;
+            return Math.min(times * 200, 1000);
+          },
+        };
+
+    redis = config.redis.url
+      ? new Redis(config.redis.url, redisOptions)
+      : new Redis(redisOptions);
 
     redis.on('connect', () => {
       isRedisConnected = true;

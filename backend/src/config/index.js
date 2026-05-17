@@ -24,6 +24,7 @@ const config = {
 
   // Redis (optional - set REDIS_DISABLED=true to disable)
   redis: {
+    url: process.env.REDIS_URL || null, // Full URL (used by Render, Railway, etc.)
     host: process.env.REDIS_DISABLED === 'true' ? null : (process.env.REDIS_HOST || 'localhost'),
     port: parseInt(process.env.REDIS_PORT, 10) || 6379,
     password: process.env.REDIS_PASSWORD || undefined,
